@@ -1,0 +1,4 @@
+
+#Just so that our individual IDE configurations don't sync and mess something up for someone else
+.idea/ 
+snake.iml
