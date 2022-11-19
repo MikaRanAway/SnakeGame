@@ -1,3 +1,5 @@
+package snake;
+
 public class Snake{
     // queue snakeBody ----- queue is an interface, so we have to check how to implement that properly
     // SnakeHead head;
