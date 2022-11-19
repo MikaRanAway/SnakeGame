@@ -8,12 +8,7 @@ import snake.TemporaryClass;
 class TemporaryTest{
 
     @Test
-    public static void temporaryTestFunction(){
-        assertEquals(snake.TemporaryClass.temporaryMethod(), 2);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(TemporaryClass.temporaryMethod());
-
+    public void temporaryTestFunction(){
+        assertEquals(snake.TemporaryClass.temporaryMethod(), 1);
     }
 }
