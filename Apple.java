@@ -1,3 +1,5 @@
+package snake;
+
 import java.awt.*;
 
 public class Apple {

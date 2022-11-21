@@ -1,4 +1,4 @@
-package com.example.demo;
+package snake;
 
 public class SnakeFrameController {
 
