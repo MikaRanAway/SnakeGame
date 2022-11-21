@@ -4,6 +4,6 @@ java:
   script:
     - gradle test
   artifacts:
-    when: never
+    when: always
     reports:
       junit: build/test-results/TEST-*.xml
