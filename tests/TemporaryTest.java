@@ -7,6 +7,6 @@ class TemporaryTest{
 
     @Test
     public void temporaryTestFunction(){
-        assertEquals(snake.TemporaryClass.temporaryMethod(), 1);
+        //assertEquals(snake..temporaryMethod(), 1);
     }
 }
