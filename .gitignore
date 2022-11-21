@@ -3,5 +3,6 @@
 .idea/ 
 snake.iml
 
-lib
-out
+lib/
+out/
+
