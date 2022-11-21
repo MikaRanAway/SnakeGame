@@ -1,8 +1,9 @@
+
 java:
   stage: test
   script:
     - gradle test
   artifacts:
-    when: always
+    when: never
     reports:
       junit: build/test-results/TEST-*.xml
