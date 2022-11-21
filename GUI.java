@@ -1,4 +1,4 @@
-package com.example.demo;
+package snake;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
