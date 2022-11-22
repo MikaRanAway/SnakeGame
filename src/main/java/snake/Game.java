@@ -2,11 +2,12 @@ package snake;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.management.monitor.GaugeMonitor;
 
 public class Game implements Runnable{
 
     //Variables
+    private static int TICK_SPEED = 200; // in milliseconds
+
     int Score;
     private final GamePanel gamePanel;
 
@@ -16,7 +17,6 @@ public class Game implements Runnable{
     }
 
     //Methods
-    //run
     public void start(){
         Thread thread = new Thread(this);
         thread.start();
@@ -27,7 +27,7 @@ public class Game implements Runnable{
     public void run() {
         while(true){
             try {
-                TimeUnit.MILLISECONDS.sleep(200);;
+                TimeUnit.MILLISECONDS.sleep(TICK_SPEED);;
                 gamePanel.repaint();
             } catch (InterruptedException e) {
                 e.printStackTrace();

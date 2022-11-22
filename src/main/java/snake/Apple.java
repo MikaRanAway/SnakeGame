@@ -39,8 +39,8 @@ public class Apple {
         int y;
 
         do { 
-            x = random.nextInt(GamePanel.GRID_WIDTH + 1);
-            y = random.nextInt(GamePanel.GRID_HEIGHT + 1);
+            x = random.nextInt(GamePanel.GRID_WIDTH);
+            y = random.nextInt(GamePanel.GRID_HEIGHT);
         } while(!isLocationAvailable(x, y, gamePanel));
 
         this.x = x;

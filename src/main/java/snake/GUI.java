@@ -3,7 +3,9 @@ package snake;
 import javax.swing.JFrame;
 
 public class GUI {
-    public static final int WINDOW_HEIGHT = 800;
+    public static final int CONTENT_HEIGHT = 800;
+    private static final int VERTICAL_MARGIN = 30;
+    private static final int WINDOW_HEIGHT = CONTENT_HEIGHT + VERTICAL_MARGIN;
     public static final int WINDOW_WIDTH = 800;
     private JFrame jFrame;
 
@@ -23,7 +25,7 @@ public class GUI {
         
         jFrame.revalidate();
         jFrame.repaint();
-        
+
         return gamePanel;
     }
 }

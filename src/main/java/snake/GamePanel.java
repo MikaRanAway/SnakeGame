@@ -8,7 +8,7 @@ import java.awt.Dimension;
 public class GamePanel extends JPanel{
     public static final int UNIT_SIZE = 20;
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in columns
-    public static final int GRID_HEIGHT = GUI.WINDOW_HEIGHT / UNIT_SIZE; // Not in pixels, measured in rows
+    public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in rows
 
     final Snake snake = new Snake();
     final Apple apple = new Apple();
@@ -22,11 +22,11 @@ public class GamePanel extends JPanel{
         apple.moveToEmptySpot(this);
     }
 
+    // Called every time "repaint()" is called
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        apple.moveToEmptySpot(this);
         drawGrid(graphics);
         apple.draw(graphics);
     }
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel{
 
         // draws vertical lines
         for (int i = 0; i < GRID_WIDTH; i++){
-            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, GUI.WINDOW_HEIGHT);
+            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, GUI.CONTENT_HEIGHT);
         }
 
         // draws horizontal lines
