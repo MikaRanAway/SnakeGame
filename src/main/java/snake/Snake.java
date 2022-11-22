@@ -8,9 +8,32 @@ public class Snake{
 
     public Snake(){}
 
-    public void movement(){}
+    public void movement(){
 
-    public void collision(){}        // maybe this is a boolean that triggers the lose screen if true?
+        //...
+
+        int newX = -1; //tmp
+        int newY = -1; //tmp
+        if(willCollide(newX, newY)){
+            //failGame()
+        }
+    }
+
+
+    private boolean willCollide(int newX, int newY){
+        if(isOutOfBounds(newX, newY)){
+            return true;
+        }
+        
+        return false;
+    }
+
+    private boolean isOutOfBounds(int x, int y){
+        int gridSizeX = 20; //tmp
+        int gridSizeY = 20; //tmp
+
+        return (x > gridSizeX) || (y > gridSizeY);
+    }
 
     public void grow(){
         BodyPart newBodyPart = new BodyPart();

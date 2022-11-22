@@ -27,14 +27,14 @@ public class Apple {
         while(true) { 
             int x = random.nextInt(21); //tmp hard coded
             int y = random.nextInt(21); //tmp hard coded
-            if(isLocationEmpty(x, y)){ //tmp , if location is empty
+            if(isLocationAvailable(x, y)){ //tmp , if location is empty
                 return new int[]{x, y};
             }
 
         }
     }
 
-    private boolean isLocationEmpty(int x, int y){
+    private boolean isLocationAvailable(int x, int y){
         if (!isLocationWithinBounds(x, y)){
             return false;
         }
