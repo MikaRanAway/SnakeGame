@@ -5,7 +5,7 @@ public final class Main{
         System.out.println("~~~~<  *");
 
         final GUI gui = new GUI();
-        GUI.main(new String[]{"Yeah, not a pretty solution"});
+        //GUI.main(new String[]{"Yeah, not a pretty solution"});
     }
 
 }
