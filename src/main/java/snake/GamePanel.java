@@ -9,28 +9,36 @@ public class GamePanel extends JPanel{
     final int windowWidth;
     final int windowHeight;
     final int UNIT_SIZE = 20;
+    final int gridWidth;
+    final int gridHeight;
 
 
     public GamePanel(int windowWidth, int windowHeight){
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
+        this.gridWidth = windowWidth / UNIT_SIZE;
+        this.gridHeight = windowHeight / UNIT_SIZE;
 
         this.setPreferredSize(new Dimension(windowWidth, windowHeight));
-        this.setBackground(Color.BLUE);
+        this.setBackground(Color.BLACK);
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
 
-        drawGrid(g);
+        drawGrid(graphics);
     }
 
-    void drawGrid(Graphics g){
-        for (int i = 0; i < (windowHeight / UNIT_SIZE); i = i + 1) {
-            g.setColor(Color.LIGHT_GRAY);
-            g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, windowHeight);
-            g.drawLine(0, i * UNIT_SIZE, windowWidth, i * UNIT_SIZE);
+    private void drawGrid(Graphics graphics){
+        graphics.setColor(Color.GRAY);
+
+        for (int i = 0; i < gridWidth; i++){
+            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, windowHeight);
+        }
+
+        for (int i = 0; i < gridHeight; i++){
+            graphics.drawLine(0, i * UNIT_SIZE, windowWidth, i * UNIT_SIZE);
         }
     }
 }

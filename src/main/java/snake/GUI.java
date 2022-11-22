@@ -10,7 +10,7 @@ public class GUI {
     public static final int gridSizeY = 20;
 
     private final int WINDOW_HEIGHT = 700;
-    private final int WINDOW_WIDTH = 700;
+    private final int WINDOW_WIDTH = 500;
 
 
     public void start(){
