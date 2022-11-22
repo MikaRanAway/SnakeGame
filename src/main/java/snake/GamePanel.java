@@ -26,6 +26,7 @@ public class GamePanel extends JPanel{
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
+        apple.moveToEmptySpot(this);
         drawGrid(graphics);
         apple.draw(graphics);
     }

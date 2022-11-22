@@ -6,6 +6,9 @@ public final class Main{
 
         final GUI gui = new GUI();
         gui.render();
+        GamePanel gamePanel = gui.addGamePanel();
+        Game game = new Game(gamePanel);
+        game.start();
     }
 
 }
