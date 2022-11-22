@@ -5,8 +5,8 @@ import java.util.Random;
 
 
 public class Apple {
-    private int appleX;
-    private int appleY;
+    private int x;
+    private int y;
 
     //========== CONSTRUCTOR ==========
 
@@ -16,12 +16,12 @@ public class Apple {
 
     //========== GETTERS ==========
 
-    public int getAppleX(){
-        return appleX;
+    public int getX(){
+        return x;
     }
 
-    public int getAppleY(){
-        return appleY;
+    public int getY(){
+        return y;
     }
 
 
@@ -33,18 +33,18 @@ public class Apple {
 
 
     public void spawn(){
-        int[] location = findEmptyLocation();
+        int[] location = findAvailableLocation();
 
 
     }
 
-    private int[] findEmptyLocation(){
+    private int[] findAvailableLocation(){
         Random random = new Random();
 
         while(true) { 
-            int x = random.nextInt(GUI.gridSizeX + 1); //tmp hard coded
-            int y = random.nextInt(GUI.gridSizeY + 1); //tmp hard coded
-            if(isLocationAvailable(x, y)){ //tmp , if location is empty
+            int x = random.nextInt(GUI.gridSizeX + 1);
+            int y = random.nextInt(GUI.gridSizeY + 1);
+            if(isLocationAvailable(x, y)){
                 return new int[]{x, y};
             }
 
