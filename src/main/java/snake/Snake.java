@@ -29,7 +29,7 @@ public class Snake{
     }
 
     private boolean isOutOfBounds(int x, int y){
-        return (x > GUI.gridSizeX) || (y > GUI.gridSizeY);
+        return (x > GamePanel.GRID_WIDTH) || (y > GamePanel.GRID_HEIGHT);
     }
 
     public void grow(){

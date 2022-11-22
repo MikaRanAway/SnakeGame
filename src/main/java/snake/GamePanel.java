@@ -6,21 +6,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 public class GamePanel extends JPanel{
-    final int windowWidth;
-    final int windowHeight;
-    final int UNIT_SIZE = 20;
-    final int gridWidth;
-    final int gridHeight;
+    public static final int UNIT_SIZE = 20;
+    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE;
+    public static final int GRID_HEIGHT = GUI.WINDOW_HEIGHT / UNIT_SIZE;
+
+    final Apple apple = new Apple();
 
 
     public GamePanel(int windowWidth, int windowHeight){
-        this.windowWidth = windowWidth;
-        this.windowHeight = windowHeight;
-        this.gridWidth = windowWidth / UNIT_SIZE;
-        this.gridHeight = windowHeight / UNIT_SIZE;
-
         this.setPreferredSize(new Dimension(windowWidth, windowHeight));
         this.setBackground(Color.BLACK);
+        this.setDoubleBuffered(true);
     }
 
     @Override
@@ -28,17 +24,20 @@ public class GamePanel extends JPanel{
         super.paintComponent(graphics);
 
         drawGrid(graphics);
+        apple.draw(graphics);
     }
 
     private void drawGrid(Graphics graphics){
-        graphics.setColor(Color.GRAY);
+        graphics.setColor(Color.DARK_GRAY);
 
-        for (int i = 0; i < gridWidth; i++){
-            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, windowHeight);
+        // draws vertical lines
+        for (int i = 0; i < GRID_WIDTH; i++){
+            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, GUI.WINDOW_HEIGHT);
         }
 
-        for (int i = 0; i < gridHeight; i++){
-            graphics.drawLine(0, i * UNIT_SIZE, windowWidth, i * UNIT_SIZE);
+        // draws horizontal lines
+        for (int i = 0; i < GRID_HEIGHT; i++){
+            graphics.drawLine(0, i * UNIT_SIZE, GUI.WINDOW_WIDTH, i * UNIT_SIZE);
         }
     }
 }
