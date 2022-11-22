@@ -1,4 +1,5 @@
 package snake;
+
 public class Game {
 
     //Variables

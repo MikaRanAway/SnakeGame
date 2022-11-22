@@ -7,16 +7,19 @@ import java.awt.Dimension;
 
 public class GamePanel extends JPanel{
     public static final int UNIT_SIZE = 20;
-    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE;
-    public static final int GRID_HEIGHT = GUI.WINDOW_HEIGHT / UNIT_SIZE;
+    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in columns
+    public static final int GRID_HEIGHT = GUI.WINDOW_HEIGHT / UNIT_SIZE; // Not in pixels, measured in rows
 
+    final Snake snake = new Snake();
     final Apple apple = new Apple();
 
 
     public GamePanel(int windowWidth, int windowHeight){
         this.setPreferredSize(new Dimension(windowWidth, windowHeight));
         this.setBackground(Color.BLACK);
-        this.setDoubleBuffered(true);
+        this.setDoubleBuffered(true); // for performance, apparently
+
+        apple.moveToEmptySpot(this);
     }
 
     @Override
@@ -39,5 +42,19 @@ public class GamePanel extends JPanel{
         for (int i = 0; i < GRID_HEIGHT; i++){
             graphics.drawLine(0, i * UNIT_SIZE, GUI.WINDOW_WIDTH, i * UNIT_SIZE);
         }
+    }
+
+
+    //========== USED BY COMPONENTS ==========
+
+    public boolean isSpaceWithinBounds(int x, int y){
+        return (x <= GRID_WIDTH) && (y <= GRID_HEIGHT);
+    }
+
+    public boolean isSpaceEmpty(int x, int y){
+        boolean snakeOccupiesSpace = snake.doesOccupySpace(x, y);
+        boolean appleOccupiesSpace = (apple.getX() == x) && (apple.getY() == y);
+
+        return !(snakeOccupiesSpace || appleOccupiesSpace);
     }
 }

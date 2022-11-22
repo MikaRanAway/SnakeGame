@@ -12,7 +12,7 @@ public class Apple {
     //========== CONSTRUCTOR ==========
 
     public Apple(){
-        moveToEmptySpot();
+    
     }
 
     //========== GETTERS ==========
@@ -28,36 +28,26 @@ public class Apple {
 
     //========== LOGIC ==========
 
-    public void draw (Graphics graphics){
+    public void draw(Graphics graphics){
         graphics.setColor(this.color);
         graphics.fillRect(this.x * GamePanel.UNIT_SIZE, this.y * GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
     }
 
-
-    private void moveToEmptySpot(){
+    public void moveToEmptySpot(GamePanel gamePanel){
         Random random = new Random();
         int x;
         int y;
 
         do { 
-            x = random.nextInt(GamePanel.GRID_WIDTH+ 1);
+            x = random.nextInt(GamePanel.GRID_WIDTH + 1);
             y = random.nextInt(GamePanel.GRID_HEIGHT + 1);
-        } while(!isLocationAvailable(x, y));
+        } while(!isLocationAvailable(x, y, gamePanel));
 
         this.x = x;
         this.y = y;
     }
 
-    private boolean isLocationAvailable(int x, int y){
-        if (!isLocationWithinBounds(x, y)){
-            return false;
-        }
-
-        // get snake position
-        return true; 
-    }
-
-    private boolean isLocationWithinBounds(int x, int y){
-        return (x <= GamePanel.GRID_WIDTH) && (y <= GamePanel.GRID_HEIGHT);
+    private boolean isLocationAvailable(int x, int y, GamePanel gamePanel){
+        return gamePanel.isSpaceEmpty(x, y) && gamePanel.isSpaceWithinBounds(x, y);
     }
 }

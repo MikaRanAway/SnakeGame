@@ -8,33 +8,35 @@ public class Snake{
 
     public Snake(){}
 
-    public void movement(){
+    public void movement(GamePanel gamePanel){
 
         //...
 
         int newX = -1; //tmp
         int newY = -1; //tmp
-        if(willCollide(newX, newY)){
-            //failGame()
+        if(willCollide(newX, newY, gamePanel)){
+            //TODO: failGame()
         }
     }
 
 
-    private boolean willCollide(int newX, int newY){
-        if(isOutOfBounds(newX, newY)){
+    private boolean willCollide(int newX, int newY, GamePanel gamePanel){
+        if(!gamePanel.isSpaceWithinBounds(newX, newY)){
             return true;
         }
+
+        // TODO: add collision with itself
         
         return false;
-    }
-
-    private boolean isOutOfBounds(int x, int y){
-        return (x > GamePanel.GRID_WIDTH) || (y > GamePanel.GRID_HEIGHT);
     }
 
     public void grow(){
         BodyPart newBodyPart = new BodyPart();
         snakeBody.push(newBodyPart);
+    }
+
+    public boolean doesOccupySpace(int x, int y){
+        return false; // TODO calculate based on positions of Snake's BodyParts
     }
 
     public boolean winCondition(){ return true; }

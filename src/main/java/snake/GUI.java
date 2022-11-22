@@ -7,7 +7,7 @@ public class GUI {
     public static final int WINDOW_WIDTH = 800;
 
 
-    public void start(){
+    public void render(){
         JFrame jFrame = new JFrame("Wild Snake");
         jFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
