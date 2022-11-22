@@ -6,21 +6,23 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 20; // in milliseconds
+    private static int TICK_SPEED = 200; // in milliseconds
     private final GamePanel gamePanel;
     int Score;
     
 
     //Constructor
-    public Game(GamePanel gamePanel){
-        this.gamePanel = gamePanel;
+    public Game(){
+        final GUI gui = new GUI();
+        gui.render();
+        gamePanel = gui.addGamePanel();
     }
 
 
     //Methods
 
     public void start(){
-        Thread thread = new Thread(this);
+        Thread thread = new Thread(this); // Game.java implements Runnable
         thread.start();
     }
 

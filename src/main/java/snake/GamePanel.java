@@ -36,12 +36,12 @@ public class GamePanel extends JPanel{
 
         // draws vertical lines
         for (int i = 0; i < GRID_WIDTH; i++){
-            graphics.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, GUI.CONTENT_HEIGHT);
+            graphics.drawLine(unitToPx(i), 0, unitToPx(i), GUI.CONTENT_HEIGHT);
         }
 
         // draws horizontal lines
         for (int i = 0; i < GRID_HEIGHT; i++){
-            graphics.drawLine(0, i * UNIT_SIZE, GUI.WINDOW_WIDTH, i * UNIT_SIZE);
+            graphics.drawLine(0, unitToPx(i), GUI.WINDOW_WIDTH, unitToPx(i));
         }
     }
 

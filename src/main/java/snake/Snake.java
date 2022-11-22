@@ -4,7 +4,9 @@ import java.util.Stack;
 
 public class Snake{
     // SnakeHead head;
-    private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
+
+    //Doesn't really matter which type of collection as we are only adding to it
+    private final Stack<BodyPart> snakeBody = new Stack<BodyPart>(); 
 
     public Snake(){}
 

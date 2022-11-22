@@ -13,13 +13,13 @@ public class GUI {
     public void render(){
         jFrame = new JFrame("Wild Snake");
         jFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // The program will quit if you close the window
         jFrame.setResizable(false);
 
         jFrame.setVisible(true);
     }
 
-    // Seperate method because Main.java needs a reference to the GamePanel and it wouldn't make sense to return it in render()
+    // Seperate method because Game.java needs a reference to the GamePanel and it wouldn't make sense to return it in render()
     public GamePanel addGamePanel(){
         GamePanel gamePanel = new GamePanel(WINDOW_WIDTH, WINDOW_HEIGHT);
         jFrame.add(gamePanel);
