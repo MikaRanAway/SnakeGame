@@ -6,3 +6,5 @@ snake.iml
 lib/
 out/
 
+.DS_Store
+
