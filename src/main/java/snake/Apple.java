@@ -7,6 +7,7 @@ import java.util.Random;
 public class Apple {
     private int x;
     private int y;
+    private Color color = Color.red;
 
     //========== CONSTRUCTOR ==========
 
@@ -28,7 +29,7 @@ public class Apple {
     //========== LOGIC ==========
 
     public void draw (Graphics graphics){
-        graphics.setColor(Color.red);
+        graphics.setColor(this.color);
         graphics.fillRect(this.x * GamePanel.UNIT_SIZE, this.y * GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
     }
 
