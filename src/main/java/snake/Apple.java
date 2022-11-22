@@ -30,7 +30,7 @@ public class Apple {
 
     public void draw(Graphics graphics){
         graphics.setColor(this.color);
-        graphics.fillRect(this.x * GamePanel.UNIT_SIZE, this.y * GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
+        graphics.fillRect(GamePanel.unitToPx(this.x), GamePanel.unitToPx(this.y), GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
     }
 
     public void moveToEmptySpot(GamePanel gamePanel){
@@ -41,13 +41,9 @@ public class Apple {
         do { 
             x = random.nextInt(GamePanel.GRID_WIDTH);
             y = random.nextInt(GamePanel.GRID_HEIGHT);
-        } while(!isLocationAvailable(x, y, gamePanel));
+        } while(!gamePanel.isSpaceEmpty(x, y));
 
         this.x = x;
         this.y = y;
-    }
-
-    private boolean isLocationAvailable(int x, int y, GamePanel gamePanel){
-        return gamePanel.isSpaceEmpty(x, y) && gamePanel.isSpaceWithinBounds(x, y);
     }
 }

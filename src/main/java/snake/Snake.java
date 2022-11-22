@@ -19,15 +19,12 @@ public class Snake{
         }
     }
 
-
+    //Called "WILLcollide" because it it probably best to check that we can move to a space BEFORE moving there
     private boolean willCollide(int newX, int newY, GamePanel gamePanel){
-        if(!gamePanel.isSpaceWithinBounds(newX, newY)){
-            return true;
-        }
-
-        // TODO: add collision with itself
+        boolean outOfBounds = !gamePanel.isSpaceWithinBounds(newX, newY);
+        boolean collidedWithItself = this.doesOccupySpace(newX, newY);
         
-        return false;
+        return outOfBounds || collidedWithItself;
     }
 
     public void grow(){

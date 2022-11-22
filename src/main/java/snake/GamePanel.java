@@ -7,8 +7,8 @@ import java.awt.Dimension;
 
 public class GamePanel extends JPanel{
     public static final int UNIT_SIZE = 20;
-    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in columns
-    public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in rows
+    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
+    public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
 
     final Snake snake = new Snake();
     final Apple apple = new Apple();
@@ -22,16 +22,16 @@ public class GamePanel extends JPanel{
         apple.moveToEmptySpot(this);
     }
 
-    // Called every time "repaint()" is called
+    // Called EVERY TIME JPanel "paints"
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        drawGrid(graphics);
+        drawGridLines(graphics);
         apple.draw(graphics);
     }
 
-    private void drawGrid(Graphics graphics){
+    private void drawGridLines(Graphics graphics){
         graphics.setColor(Color.DARK_GRAY);
 
         // draws vertical lines
@@ -47,6 +47,10 @@ public class GamePanel extends JPanel{
 
 
     //========== USED BY COMPONENTS ==========
+
+    public static int unitToPx(int units){
+        return units * UNIT_SIZE;
+    }
 
     public boolean isSpaceWithinBounds(int x, int y){
         return (x <= GRID_WIDTH) && (y <= GRID_HEIGHT);

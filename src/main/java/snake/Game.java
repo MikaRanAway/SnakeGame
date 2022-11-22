@@ -6,23 +6,25 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 200; // in milliseconds
-
-    int Score;
+    private static int TICK_SPEED = 20; // in milliseconds
     private final GamePanel gamePanel;
+    int Score;
+    
 
     //Constructor
     public Game(GamePanel gamePanel){
         this.gamePanel = gamePanel;
     }
 
+
     //Methods
+
     public void start(){
         Thread thread = new Thread(this);
         thread.start();
     }
 
-
+    //This method will run in a different thread. The game window will be unresponsive otherwise.
     @Override
     public void run() {
         while(true){
