@@ -6,13 +6,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 public class GamePanel extends JPanel{
-    final int SCREEN_HEIGHT = 400;
-    final int SCREEN_WIDTH = 400;
-    final int UNIT_SIZE = 75;
+    final int windowWidth;
+    final int windowHeight;
+    final int UNIT_SIZE = 20;
 
 
-    public GamePanel(){
-        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+    public GamePanel(int windowWidth, int windowHeight){
+        this.windowWidth = windowWidth;
+        this.windowHeight = windowHeight;
+
+        this.setPreferredSize(new Dimension(windowWidth, windowHeight));
         this.setBackground(Color.BLUE);
     }
 
@@ -20,14 +23,14 @@ public class GamePanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        /* 
-         * for (int i = 0; i < (SCREEN_HEIGHT / UNIT_SIZE); i = i + 1) {
-            g.setColor(Color.LIGHT_GRAY);
-            g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT);
-            g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
-        }
-         * 
-        */
+        drawGrid(g);
+    }
 
+    void drawGrid(Graphics g){
+        for (int i = 0; i < (windowHeight / UNIT_SIZE); i = i + 1) {
+            g.setColor(Color.LIGHT_GRAY);
+            g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, windowHeight);
+            g.drawLine(0, i * UNIT_SIZE, windowWidth, i * UNIT_SIZE);
+        }
     }
 }
