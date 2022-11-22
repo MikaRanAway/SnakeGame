@@ -1,6 +1,6 @@
 package snake;
 
-public class Body {
+public class BodyPart {
   public void Follow(){
     
   }

@@ -1,8 +1,10 @@
 package snake;
 
+import java.util.Stack;
+
 public class Snake{
-    // queue snakeBody ----- queue is an interface, so we have to check how to implement that properly
     // SnakeHead head;
+    private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
 
     public Snake(){}
 
@@ -10,7 +12,10 @@ public class Snake{
 
     public void collision(){}        // maybe this is a boolean that triggers the lose screen if true?
 
-    public void growth(){}
+    public void grow(){
+        BodyPart newBodyPart = new BodyPart();
+        snakeBody.push(newBodyPart);
+    }
 
     public boolean winCondition(){ return true; }
 }
