@@ -30,6 +30,7 @@ public class GamePanel extends JPanel{
 
         drawGridLines(graphics);
         apple.draw(graphics);
+        snake.draw(graphics);
     }
 
     private void drawGridLines(Graphics graphics){
@@ -63,4 +64,10 @@ public class GamePanel extends JPanel{
 
         return !(snakeOccupiesSpace || appleOccupiesSpace);
     }
+
+    public static void fillRect(Graphics graphics, int x, int y, Color color){
+        graphics.setColor(color);
+        graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
+    }
+    
 }
