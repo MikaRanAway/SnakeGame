@@ -32,7 +32,6 @@ public class Apple {
         GamePanel.fillRect(graphics, this.x, this.y, this.color);
     }
 
-    //used because Snake class should not "know" anything specific about apple
     public void getEaten(GamePanel gamePanel){
         moveToEmptySpot(gamePanel);
     }
