@@ -8,14 +8,16 @@ public class Game implements Runnable{
     //Variables
     private static int TICK_SPEED = 200; // in milliseconds
     private final GamePanel gamePanel;
-    int Score;
+    int score;
+    final Snake snake = new Snake();
+    final Apple apple = new Apple();
     
 
     //Constructor
     public Game(){
         final GUI gui = new GUI();
         gui.render();
-        gamePanel = gui.addGamePanel();
+        gamePanel = gui.addGamePanel(snake, apple);
     }
 
 
@@ -31,12 +33,20 @@ public class Game implements Runnable{
     public void run() {
         while(true){
             try {
-                TimeUnit.MILLISECONDS.sleep(TICK_SPEED);;
-                gamePanel.repaint();
+                TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
+                doGameTick();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void doGameTick(){
+        if(snake.canEat(apple)){
+            snake.eat(apple, gamePanel);
+        }
+        snake.movement(gamePanel);
+        gamePanel.repaint();
     }
     
 

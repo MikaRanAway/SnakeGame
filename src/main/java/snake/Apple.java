@@ -12,7 +12,7 @@ public class Apple {
     //========== CONSTRUCTOR ==========
 
     public Apple(){
-    
+        
     }
 
     //========== GETTERS ==========
@@ -31,6 +31,10 @@ public class Apple {
     public void draw(Graphics graphics){
         graphics.setColor(this.color);
         graphics.fillRect(GamePanel.unitToPx(this.x), GamePanel.unitToPx(this.y), GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
+    }
+
+    public void getEaten(GamePanel gamePanel){
+        moveToEmptySpot(gamePanel);
     }
 
     public void moveToEmptySpot(GamePanel gamePanel){

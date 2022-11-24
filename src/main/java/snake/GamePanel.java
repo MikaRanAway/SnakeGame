@@ -10,12 +10,15 @@ public class GamePanel extends JPanel{
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
 
-    final Snake snake = new Snake();
-    final Apple apple = new Apple();
+    final Snake snake;
+    final Apple apple;
 
 
-    public GamePanel(int windowWidth, int windowHeight){
-        this.setPreferredSize(new Dimension(windowWidth, windowHeight));
+    public GamePanel(Snake snake, Apple apple){
+        this.snake = snake;
+        this.apple = apple;
+        
+        this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently
 
