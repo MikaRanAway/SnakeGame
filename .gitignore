@@ -6,5 +6,6 @@ snake.iml
 lib/
 out/
 
+*.class
 .DS_Store
 
