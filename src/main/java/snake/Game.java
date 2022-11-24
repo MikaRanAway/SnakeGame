@@ -9,7 +9,7 @@ public class Game implements Runnable{
     private static int TICK_SPEED = 200; // in milliseconds
     private final GamePanel gamePanel;
     int score;
-    final Snake snake = new Snake();
+    final Snake snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
     final Apple apple = new Apple();
     
 
@@ -42,10 +42,13 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
+        snake.movement();
+        if(snake.hasCollided(gamePanel)){
+            throw new RuntimeException("Game Over not implemented yet");
+        }
         if(snake.canEat(apple)){
             snake.eat(apple, gamePanel);
         }
-        snake.movement(gamePanel);
         gamePanel.repaint();
     }
     

@@ -3,36 +3,27 @@ package snake;
 import java.util.Stack;
 
 public class Snake{
-    SnakeHead head = new SnakeHead(0, 0); //TODO remove hard coded values
-    //Doesn't really matter which type of collection as we are only adding to it
+    private final SnakeHead head;
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>(); 
 
-    public Snake(){}
-
-    public void movement(GamePanel gamePanel){
-
-        //...
-
-        int newX = -1; //tmp
-        int newY = -1; //tmp
-        if(willCollide(newX, newY, gamePanel)){
-            //TODO: failGame()
-        }
+    public Snake(int startX, int endX){
+        head = new SnakeHead(startX, endX);
     }
 
-    //Called "WILLcollide" because it it probably best to check that we can move to a space BEFORE moving there
-    private boolean willCollide(int newX, int newY, GamePanel gamePanel){
-        boolean outOfBounds = !gamePanel.isSpaceWithinBounds(newX, newY);
-        boolean collidedWithItself = this.doesOccupySpace(newX, newY);
+    public void movement(){
+    }
+
+    public boolean hasCollided(GamePanel gamePanel){
+        boolean outOfBounds = !gamePanel.isSpaceWithinBounds(head.getX(), head.getY());
+        boolean collidedWithItself = this.doesOccupySpace(head.getX(), head.getY());
         
         return outOfBounds || collidedWithItself;
     }
 
     public boolean canEat(Apple apple){
-        int headX = 4; //TODO
-        int headY = 4; //TODO
+        boolean headIsOnApple = (apple.getX() == head.getX()) && (apple.getY() == head.getY());
 
-        return (apple.getX() == headX) && (apple.getY() == headY);
+        return headIsOnApple;
     }
 
     public void eat(Apple apple, GamePanel gamePanel){
@@ -41,20 +32,26 @@ public class Snake{
     }
 
     public void grow(){
-        BodyPart newBodyPart = new BodyPart(0, 0); //TODO remove hard coded values
+        BodyPart lastBodyPart = snakeBody.peek();
+        BodyPart newBodyPart = new BodyPart(lastBodyPart.getX(), lastBodyPart.getY()); //Two bodyparts on the same place. Deal with it.
         snakeBody.push(newBodyPart);
     }
 
     public boolean doesOccupySpace(int x, int y){
         boolean headOccupiesSpace = (x == head.getX()) || (y == head.getY());
-        if(headOccupiesSpace){
-            return true;
-        }
+        boolean bodyOccupiesSpace = bodyOccupiesSpace(x, y);
+        
+        return headOccupiesSpace || bodyOccupiesSpace;
+    }
 
+    public boolean bodyOccupiesSpace(int x, int y){
         for (BodyPart bodyPart : snakeBody){
-
+            boolean bodyPartOccupiesSpace = (bodyPart.getX() == x) && (bodyPart.getY() == y);
+            if(bodyPartOccupiesSpace){
+                return true;
+            }
         }
-        return false; // TODO calculate based on positions of Snake's BodyParts
+        return false;
     }
 
     public boolean winCondition(){ return true; }
