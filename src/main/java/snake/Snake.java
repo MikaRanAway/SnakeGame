@@ -14,6 +14,7 @@ public class Snake{
     public Snake(int startX, int endX){
         head = new SnakeHead(startX, endX);
 
+        //creates initial body parts
         for(int i = 1; i <= STARTING_BODY_LENGTH; i++){
             BodyPart bodyPart = new BodyPart(startX-i, endX);
             snakeBody.push(bodyPart);
@@ -21,7 +22,6 @@ public class Snake{
     }
 
     public void draw(Graphics graphics){
-        graphics.setColor(snakeColor);
         GamePanel.fillRect(graphics, head.getX(), head.getY(), snakeColor);
         
         for(BodyPart bodyPart : snakeBody){
@@ -30,6 +30,7 @@ public class Snake{
     }
 
     public void movement(){
+
     }
 
 
@@ -50,7 +51,7 @@ public class Snake{
 
     private void grow(){
         BodyPart lastBodyPart = snakeBody.peek();
-        BodyPart newBodyPart = new BodyPart(lastBodyPart.getX(), lastBodyPart.getY()); //Two bodyparts on the same place. Deal with it.
+        BodyPart newBodyPart = new BodyPart(lastBodyPart.getX(), lastBodyPart.getY()); //To bodyParts at same place (until snake moves)
         snakeBody.push(newBodyPart);
     }
 

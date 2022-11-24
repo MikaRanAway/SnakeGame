@@ -29,8 +29,7 @@ public class Apple {
     //========== LOGIC ==========
 
     public void draw(Graphics graphics){
-        graphics.setColor(this.color);
-        graphics.fillRect(GamePanel.unitToPx(this.x), GamePanel.unitToPx(this.y), GamePanel.UNIT_SIZE, GamePanel.UNIT_SIZE);
+        GamePanel.fillRect(graphics, this.x, this.y, this.color);
     }
 
     //used because Snake class should not "know" anything specific about apple

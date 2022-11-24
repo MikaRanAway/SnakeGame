@@ -69,5 +69,4 @@ public class GamePanel extends JPanel{
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
-    
 }
