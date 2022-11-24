@@ -9,7 +9,7 @@ public class BodyPart {
         this.y = y;
     }
 
-    
+
     //========== GETTERS ==========
 
     int getX(){
@@ -19,6 +19,8 @@ public class BodyPart {
     int getY(){
         return y;
     }
+
+    
 
     public void Follow(){
 

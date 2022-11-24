@@ -21,8 +21,6 @@ public class GamePanel extends JPanel{
         this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently
-
-        apple.moveToEmptySpot(this);
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -60,7 +58,7 @@ public class GamePanel extends JPanel{
     }
 
     public boolean isSpaceEmpty(int x, int y){
-        boolean snakeOccupiesSpace = snake.doesOccupySpace(x, y);
+        boolean snakeOccupiesSpace = snake.doesSnakeOccupySpace(x, y);
         boolean appleOccupiesSpace = (apple.getX() == x) && (apple.getY() == y);
 
         return !(snakeOccupiesSpace || appleOccupiesSpace);

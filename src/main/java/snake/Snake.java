@@ -13,15 +13,13 @@ public class Snake{
     public void movement(){
     }
 
-    public boolean hasCollided(GamePanel gamePanel){
-        boolean outOfBounds = !gamePanel.isSpaceWithinBounds(head.getX(), head.getY());
-        boolean collidedWithItself = this.doesOccupySpace(head.getX(), head.getY());
-        
-        return outOfBounds || collidedWithItself;
-    }
+
+    //========== GROWTH ==========
 
     public boolean canEat(Apple apple){
-        boolean headIsOnApple = (apple.getX() == head.getX()) && (apple.getY() == head.getY());
+        boolean headIsOnApple = 
+            (apple.getX() == head.getX()) &&
+            (apple.getY() == head.getY());
 
         return headIsOnApple;
     }
@@ -31,28 +29,40 @@ public class Snake{
         grow();
     }
 
-    public void grow(){
+    private void grow(){
         BodyPart lastBodyPart = snakeBody.peek();
         BodyPart newBodyPart = new BodyPart(lastBodyPart.getX(), lastBodyPart.getY()); //Two bodyparts on the same place. Deal with it.
         snakeBody.push(newBodyPart);
     }
 
-    public boolean doesOccupySpace(int x, int y){
+
+    //========== COLLISION ==========
+
+    public boolean hasCollided(GamePanel gamePanel){
+        boolean withinBounds = gamePanel.isSpaceWithinBounds(head.getX(), head.getY());
+        boolean collidedWithItself = this.doesSnakeOccupySpace(head.getX(), head.getY());
+        
+        return !withinBounds || collidedWithItself;
+    }
+
+    //also used by Apple class
+    public boolean doesSnakeOccupySpace(int x, int y){
         boolean headOccupiesSpace = (x == head.getX()) || (y == head.getY());
-        boolean bodyOccupiesSpace = bodyOccupiesSpace(x, y);
+        boolean bodyOccupiesSpace = doesBodyOccupySpace(x, y);
         
         return headOccupiesSpace || bodyOccupiesSpace;
     }
 
-    public boolean bodyOccupiesSpace(int x, int y){
+    private boolean doesBodyOccupySpace(int x, int y){
         for (BodyPart bodyPart : snakeBody){
-            boolean bodyPartOccupiesSpace = (bodyPart.getX() == x) && (bodyPart.getY() == y);
+            boolean bodyPartOccupiesSpace = 
+                (bodyPart.getX() == x) && 
+                (bodyPart.getY() == y);
+                
             if(bodyPartOccupiesSpace){
                 return true;
             }
         }
         return false;
     }
-
-    public boolean winCondition(){ return true; }
 }
