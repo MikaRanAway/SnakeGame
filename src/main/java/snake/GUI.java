@@ -14,7 +14,7 @@ public class GUI {
         jFrame = new JFrame("Wild Snake");
         jFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // The program will quit if you close the window
-        jFrame.setResizable(false);
+        jFrame.setResizable(false); 
 
         jFrame.setVisible(true);
     }
