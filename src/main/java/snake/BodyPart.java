@@ -1,4 +1,4 @@
-package snake;
+package snake.src.main.java.snake;
 
 public class BodyPart {
     private int x;

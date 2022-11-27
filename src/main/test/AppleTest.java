@@ -1,8 +1,8 @@
-package test;
+package snake.src.main.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import snake.Apple;
+import snake.src.main.java.snake.Apple;
 
 
 class TemporaryTest{

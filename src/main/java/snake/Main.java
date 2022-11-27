@@ -1,4 +1,4 @@
-package snake;
+package snake.src.main.java.snake;
 
 public final class Main{
     public static void main(String[] args) {
