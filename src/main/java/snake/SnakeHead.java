@@ -1,9 +1,12 @@
 package snake.src.main.java.snake;
 
+import java.awt.*;
+
 public class SnakeHead {
 
     private int x;
     private int y;
+    private final Color color = Color.decode("#00ff00");
 
     //sad and empty
 
@@ -23,6 +26,9 @@ public class SnakeHead {
         return y;
     }
 
+
+    //=========== SETTERS ===========
+
     public void setX(int x) {
         this.x = x;
     }
@@ -31,6 +37,8 @@ public class SnakeHead {
         this.y = y;
     }
 
-    public void movement(){}
-    public void eating(){}
+    public void draw(Graphics graphics){
+        GamePanel.fillRect(graphics, getX(), getY(), color);
+    }
+
 }

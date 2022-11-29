@@ -3,10 +3,10 @@ package snake.src.main.java.snake;
 import javax.swing.JFrame;
 
 public class GUI {
-    public static final int CONTENT_HEIGHT = 500; // Must be divisible with GamePanel.UNIT_SIZE
+    public static final int CONTENT_HEIGHT = 200; // Must be divisible with GamePanel.UNIT_SIZE
     private static final int VERTICAL_MARGIN = 30; // This exists because otherwise the GamePanel will not have enough room. Not sure why.
     private static final int WINDOW_HEIGHT = CONTENT_HEIGHT + VERTICAL_MARGIN;
-    public static final int WINDOW_WIDTH = 500; // Must be divisible with GamePanel.UNIT_SIZE
+    public static final int WINDOW_WIDTH = 200; // Must be divisible with GamePanel.UNIT_SIZE
     private JFrame jFrame;
 
 
@@ -14,7 +14,7 @@ public class GUI {
         jFrame = new JFrame("Wild Snake");
         jFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // The program will quit if you close the window
-        jFrame.setResizable(false); 
+        //jFrame.setResizable(true);
 
         jFrame.setVisible(true);
     }

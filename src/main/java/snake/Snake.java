@@ -4,12 +4,11 @@ import java.util.Stack;
 
 
 public class Snake{
-    public static final int STARTING_BODY_LENGTH = 3;
+    public static final int STARTING_BODY_LENGTH = 60;
 
     private final SnakeHead head;
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>(); 
-    private final Color snakeColor = Color.green;
-    
+
 
     public Snake(int startX, int endX){
         head = new SnakeHead(startX, endX);
@@ -22,15 +21,14 @@ public class Snake{
     }
 
     public void draw(Graphics graphics){
-        GamePanel.fillRect(graphics, head.getX(), head.getY(), snakeColor);
-        
+        head.draw(graphics);
+
         for(BodyPart bodyPart : snakeBody){
-            GamePanel.fillRect(graphics, bodyPart.getX(), bodyPart.getY(), snakeColor);
+            bodyPart.draw(graphics);
         }
     }
 
-    public void movement(){
-
+    public void move(){
         // this for loop makes the BodyParts to actually follow the head and each other
         for(int i = snakeBody.size() -1; i >= 0; i--){
             if (i != 0){
@@ -41,16 +39,16 @@ public class Snake{
         }
 
         // these 4 if clauses handle the Direction of the snake
-        if (GamePanel.isUpDirection()){
+        if (Movement.isUpDirection()){
             head.setY(head.getY() - 1);
         }
-        if (GamePanel.isDownDirection()){
+        if (Movement.isDownDirection()){
             head.setY(head.getY() + 1);
         }
-        if (GamePanel.isRightDirection()){
+        if (Movement.isRightDirection()){
             head.setX(head.getX() + 1);
         }
-        if (GamePanel.isLeftDirection()){
+        if (Movement.isLeftDirection()){
             head.setX(head.getX() - 1);
         }
     }

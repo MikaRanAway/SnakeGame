@@ -12,37 +12,17 @@ public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 20;
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
-    private static boolean leftDirection = false;
-    private static boolean rightDirection = true;
-    private static boolean upDirection = false;
-    private static boolean downDirection = false;
     final Snake snake;
     final Apple apple;
-
-    public static boolean isLeftDirection() {
-        return leftDirection;
-    }
-
-    public static boolean isRightDirection() {
-        return rightDirection;
-    }
-
-    public static boolean isUpDirection() {
-        return upDirection;
-    }
-
-    public static boolean isDownDirection() {
-        return downDirection;
-    }
 
     public GamePanel(Snake snake, Apple apple){
         this.snake = snake;
         this.apple = apple;
-        
+
         this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently
-        this.addKeyListener(new MyKeyAdapter()); // this will add and use the class for moving the snake based on keyboard input
+        this.addKeyListener(new Movement()); // this will add and use the class for moving the snake based on keyboard input
         this.setFocusable(true); // this will make the keyboard be focused on the game window
     }
 
@@ -78,7 +58,8 @@ public class GamePanel extends JPanel {
     }
 
     public boolean isSpaceWithinBounds(int x, int y){
-        return (x <= GRID_WIDTH) && (y <= GRID_HEIGHT);
+        return (x < GRID_WIDTH) && (x >= 0) &&
+                (y < GRID_HEIGHT) && (y >= 0);
     }
 
     public boolean isSpaceEmpty(int x, int y){
@@ -92,36 +73,5 @@ public class GamePanel extends JPanel {
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
-    //this class is needed to use the method kePressed() which will wait for a key to be pressed on the keyboard
-    private static class MyKeyAdapter extends KeyAdapter {
-        //This is an Override method which should control the snakes movement based on the key pressed! source: internet XD
-        @Override
-        public void keyPressed(KeyEvent e){
-            int keyCode = e.getKeyCode();
-            //if the UP Arrow key is pressed AND the snake is not moving down then the head will move UP
-            if (keyCode == KeyEvent.VK_UP && !downDirection){
-                upDirection = true;
-                leftDirection = false;
-                rightDirection =false;
-            }
-            //if the DOWN Arrow key is pressed AND the snake is not moving up then the head will move DOWN
-            else if (keyCode == KeyEvent.VK_DOWN && !upDirection) {
-                downDirection = true;
-                leftDirection = false;
-                rightDirection = false;
-            }
-            //if the RIGHT Arrow key is pressed AND the snake is not moving left then the head will move RIGHT
-            else if (keyCode == KeyEvent.VK_RIGHT && !leftDirection) {
-                rightDirection = true;
-                upDirection = false;
-                downDirection = false;
-            }
-            //if the LEFT Arrow key is pressed AND the snake is not moving right then the head will move LEFT
-            else if (keyCode == KeyEvent.VK_LEFT && !rightDirection){
-                leftDirection = true;
-                upDirection = false;
-                downDirection = false;
-            }
-        }
-    }
+
 }

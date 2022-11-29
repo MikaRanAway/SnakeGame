@@ -1,8 +1,11 @@
 package snake.src.main.java.snake;
 
+import java.awt.*;
+
 public class BodyPart {
     private int x;
     private int y;
+    private final Color color = Color.decode("#00dd00");
 
     public BodyPart(int x, int y){
         this.x = x;
@@ -20,6 +23,9 @@ public class BodyPart {
         return y;
     }
 
+
+    //========== SETTERS ==========
+
     public void setX(int x) {
         this.x = x;
     }
@@ -28,7 +34,8 @@ public class BodyPart {
         this.y = y;
     }
 
-    public void Follow(){
 
+    public void draw(Graphics graphics){
+        GamePanel.fillRect(graphics, getX(), getY(), color);
     }
 }

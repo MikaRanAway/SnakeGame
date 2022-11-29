@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 200; // in milliseconds
+    private static int TICK_SPEED = 400; // in milliseconds
 
     private final GamePanel gamePanel;
     private final Snake snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
@@ -45,7 +45,7 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
-        snake.movement();
+        snake.move();
         if(snake.hasCollided(gamePanel)){
             failGame();
             return;
@@ -55,7 +55,7 @@ public class Game implements Runnable{
             snake.eat(apple, gamePanel);
         }
 
-        gamePanel.repaint(); //no changes is displayed until this is called
+        gamePanel.repaint(); //no changes are displayed until this is called
     }
 
     private void failGame(){
