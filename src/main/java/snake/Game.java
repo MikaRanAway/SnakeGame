@@ -63,7 +63,7 @@ public class Game implements Runnable{
 
     private void failGame(){
         runGame = false;
-        gui.showGameOver(gamePanel);
+        gamePanel.showGameOver();
     }
     
 
