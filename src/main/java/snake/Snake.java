@@ -28,6 +28,8 @@ public class Snake{
         }
     }
 
+    //========== MOVEMENT ==========
+
     public void move(){
         // this for loop makes the BodyParts to actually follow the head and each other
         for(int i = snakeBody.size() -1; i >= 0; i--){

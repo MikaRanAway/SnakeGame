@@ -19,6 +19,8 @@ public class GamePanel extends JPanel {
         this.snake = snake;
         this.apple = apple;
 
+        setOpaque(true);
+        setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently

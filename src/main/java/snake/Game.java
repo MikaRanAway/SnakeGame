@@ -1,5 +1,6 @@
 package snake.src.main.java.snake;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -8,15 +9,17 @@ public class Game implements Runnable{
     //Variables
     private static int TICK_SPEED = 400; // in milliseconds
 
+    private final GUI gui;
     private final GamePanel gamePanel;
     private final Snake snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
     private final Apple apple = new Apple();
     int score;
+    private boolean runGame = true;
     
 
     //Constructor
     public Game(){
-        final GUI gui = new GUI();
+        gui = new GUI();
         gui.render();
         gamePanel = gui.addGamePanel(snake, apple);
     }
@@ -34,7 +37,7 @@ public class Game implements Runnable{
     //This method will run in a different thread. The game window will be unresponsive otherwise.
     @Override
     public void run() {
-        while(true){
+        while(runGame){
             try {
                 TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
                 doGameTick();
@@ -59,7 +62,8 @@ public class Game implements Runnable{
     }
 
     private void failGame(){
-        throw new RuntimeException("Game Over not implemented yet"); //TODO
+        runGame = false;
+        gui.showGameOver(gamePanel);
     }
     
 
