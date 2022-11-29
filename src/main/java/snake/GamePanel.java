@@ -1,9 +1,7 @@
 package snake.src.main.java.snake;
 
-import java.awt.Graphics;
+import java.awt.*;
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,6 +18,7 @@ public class GamePanel extends JPanel {
         this.snake = snake;
         this.apple = apple;
 
+        ((FlowLayout) getLayout()).setVgap(0);
         setOpaque(true);
         setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));

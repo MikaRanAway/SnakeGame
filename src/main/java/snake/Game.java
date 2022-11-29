@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 400; // in milliseconds
+    private static int TICK_SPEED = 40; // in milliseconds
 
     private final GUI gui;
     private final GamePanel gamePanel;
