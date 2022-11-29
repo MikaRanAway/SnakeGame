@@ -31,10 +31,16 @@ public class Snake{
 
     public void movement(){
 
-        for(int i = snakeBody.size() -1; i > 0; i--){
-            followBody();
+        // this for loop makes the BodyParts to actually follow the head and each other
+        for(int i = snakeBody.size() -1; i >= 0; i--){
+            if (i != 0){
+                followBody(i);
+            }else {
+                followHead(i);
+            }
         }
 
+        // these 4 if clauses handle the Direction of the snake
         if (GamePanel.isUpDirection()){
             head.setY(head.getY() - 1);
         }
@@ -48,14 +54,20 @@ public class Snake{
             head.setX(head.getX() - 1);
         }
     }
-    public void followHead(BodyPart lastBodyPart){
+    public void followHead(int i){
+        // the last body part is index = 0 in the stack<BodyPart> and this part is the one exactly before the head
+        BodyPart lastBodyPart = snakeBody.get(i);
         lastBodyPart.setX(head.getX());
         lastBodyPart.setY(head.getY());
     }
-    public void followBody(BodyPart previousBodyPart, int i){
-        previousBodyPart.setX();
-        previousBodyPart.setY();
+    public void followBody( int i){
+        BodyPart firsBodyPart = snakeBody.get(i); // the first body part is the last index in the stack<BodyPart>
+        BodyPart secondBodyPart = snakeBody.get(i -1); // the second body part is the second tp last index in the stack<BodyPart>
+        firsBodyPart.setX(secondBodyPart.getX());
+        firsBodyPart.setY(secondBodyPart.getY());
     }
+
+
 
     //========== GROWTH ==========
 

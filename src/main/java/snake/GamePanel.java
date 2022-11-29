@@ -42,8 +42,8 @@ public class GamePanel extends JPanel {
         this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently
-        this.addKeyListener(new MyKeyAdapter());
-        this.setFocusable(true);
+        this.addKeyListener(new MyKeyAdapter()); // this will add and use the class for moving the snake based on keyboard input
+        this.setFocusable(true); // this will make the keyboard be focused on the game window
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -92,11 +92,11 @@ public class GamePanel extends JPanel {
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
+    //this class is needed to use the method kePressed() which will wait for a key to be pressed on the keyboard
     private static class MyKeyAdapter extends KeyAdapter {
-        //This is an Overriden method which should control the snakes movement based on the key pressed! source: internet XD
+        //This is an Override method which should control the snakes movement based on the key pressed! source: internet XD
         @Override
         public void keyPressed(KeyEvent e){
-            System.out.println("fk u");
             int keyCode = e.getKeyCode();
             //if the UP Arrow key is pressed AND the snake is not moving down then the head will move UP
             if (keyCode == KeyEvent.VK_UP && !downDirection){
