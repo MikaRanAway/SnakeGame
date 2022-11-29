@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUI {
-    public static final int CONTENT_HEIGHT = 200; // Must be divisible with GamePanel.UNIT_SIZE
+    public static final int CONTENT_HEIGHT = 500; // Must be divisible with GamePanel.UNIT_SIZE
     private static final int VERTICAL_MARGIN = 30; // This exists because otherwise the GamePanel will not have enough room. Not sure why.
     public static final int WINDOW_HEIGHT = CONTENT_HEIGHT + VERTICAL_MARGIN;
-    public static final int WINDOW_WIDTH = 200; // Must be divisible with GamePanel.UNIT_SIZE
+    public static final int WINDOW_WIDTH = 500; // Must be divisible with GamePanel.UNIT_SIZE
     private JFrame jFrame;
     private JLayeredPane layeredPane;
 

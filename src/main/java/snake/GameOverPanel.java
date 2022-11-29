@@ -26,10 +26,15 @@ public class GameOverPanel extends JPanel {
         optionsGroup.setPreferredSize(new Dimension(180, 80));
         optionsGroup.setOpaque(false);
 
-        Font textFieldFont = new Font("SansSerif", Font.BOLD, 25);
+        Font textFieldFont = new Font("SansSerif", Font.BOLD, 30);
         JTextField textField = new JTextField();
         textField.setText("Game Over");
         textField.setFont(textFieldFont);
+        textField.setOpaque(false);
+        textField.setBackground(new Color(0, 0, 0, 0));
+        textField.setBorder(null);
+        textField.setForeground(Color.decode("#eeeeee"));
+
 
         JButton button = new JButton();
         button.setText("Want to try again?");
