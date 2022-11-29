@@ -31,8 +31,31 @@ public class Snake{
 
     public void movement(){
 
-    }
+        for(int i = snakeBody.size() -1; i > 0; i--){
+            followBody();
+        }
 
+        if (GamePanel.isUpDirection()){
+            head.setY(head.getY() - 1);
+        }
+        if (GamePanel.isDownDirection()){
+            head.setY(head.getY() + 1);
+        }
+        if (GamePanel.isRightDirection()){
+            head.setX(head.getX() + 1);
+        }
+        if (GamePanel.isLeftDirection()){
+            head.setX(head.getX() - 1);
+        }
+    }
+    public void followHead(BodyPart lastBodyPart){
+        lastBodyPart.setX(head.getX());
+        lastBodyPart.setY(head.getY());
+    }
+    public void followBody(BodyPart previousBodyPart, int i){
+        previousBodyPart.setX();
+        previousBodyPart.setY();
+    }
 
     //========== GROWTH ==========
 

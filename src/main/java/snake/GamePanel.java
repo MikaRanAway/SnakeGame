@@ -4,15 +4,36 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 20;
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
-
+    private static boolean leftDirection = false;
+    private static boolean rightDirection = true;
+    private static boolean upDirection = false;
+    private static boolean downDirection = false;
     final Snake snake;
     final Apple apple;
 
+    public static boolean isLeftDirection() {
+        return leftDirection;
+    }
+
+    public static boolean isRightDirection() {
+        return rightDirection;
+    }
+
+    public static boolean isUpDirection() {
+        return upDirection;
+    }
+
+    public static boolean isDownDirection() {
+        return downDirection;
+    }
 
     public GamePanel(Snake snake, Apple apple){
         this.snake = snake;
@@ -21,6 +42,8 @@ public class GamePanel extends JPanel{
         this.setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true); // for performance, apparently
+        this.addKeyListener(new MyKeyAdapter());
+        this.setFocusable(true);
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -68,5 +91,37 @@ public class GamePanel extends JPanel{
     public static void fillRect(Graphics graphics, int x, int y, Color color){
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
+    }
+    private static class MyKeyAdapter extends KeyAdapter {
+        //This is an Overriden method which should control the snakes movement based on the key pressed! source: internet XD
+        @Override
+        public void keyPressed(KeyEvent e){
+            System.out.println("fk u");
+            int keyCode = e.getKeyCode();
+            //if the UP Arrow key is pressed AND the snake is not moving down then the head will move UP
+            if (keyCode == KeyEvent.VK_UP && !downDirection){
+                upDirection = true;
+                leftDirection = false;
+                rightDirection =false;
+            }
+            //if the DOWN Arrow key is pressed AND the snake is not moving up then the head will move DOWN
+            else if (keyCode == KeyEvent.VK_DOWN && !upDirection) {
+                downDirection = true;
+                leftDirection = false;
+                rightDirection = false;
+            }
+            //if the RIGHT Arrow key is pressed AND the snake is not moving left then the head will move RIGHT
+            else if (keyCode == KeyEvent.VK_RIGHT && !leftDirection) {
+                rightDirection = true;
+                upDirection = false;
+                downDirection = false;
+            }
+            //if the LEFT Arrow key is pressed AND the snake is not moving right then the head will move LEFT
+            else if (keyCode == KeyEvent.VK_LEFT && !rightDirection){
+                leftDirection = true;
+                upDirection = false;
+                downDirection = false;
+            }
+        }
     }
 }

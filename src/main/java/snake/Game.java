@@ -46,11 +46,13 @@ public class Game implements Runnable{
 
     private void doGameTick(){
         snake.movement();
-        if(snake.hasCollided(gamePanel)){
+       /* if(snake.hasCollided(gamePanel)){
             failGame();
             return;
         }
 
+
+        */
         if(snake.canEat(apple)){
             snake.eat(apple, gamePanel);
         }
