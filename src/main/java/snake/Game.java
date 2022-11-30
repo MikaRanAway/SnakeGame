@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 300; // in milliseconds
+    private static int TICK_SPEED = 500; // in milliseconds
 
     private final GUI gui;
     private final GamePanel gamePanel;
@@ -22,7 +22,6 @@ public class Game implements Runnable{
     //Constructor
     public Game(){
         gui = new GUI();
-        gui.render();
         gamePanel = gui.addGamePanel();
     }
 
@@ -34,7 +33,6 @@ public class Game implements Runnable{
         snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
         gamePanel.initialize(snake, apple);
         apple.moveToEmptySpot(gamePanel);
-        Movement.resetDirections();
 
         runGame = true;
         gameThread = new Thread(this); // Game.java implements Runnable
@@ -55,6 +53,11 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
+        if(hasWon()){
+            winGame();
+            return;
+        }
+
         snake.move();
         if(snake.hasCollided(gamePanel)){
             failGame();
@@ -68,6 +71,16 @@ public class Game implements Runnable{
         gamePanel.repaint(); //no changes are displayed until this is called
     }
 
+    public boolean hasWon(){
+        return snake.getLength() >= GamePanel.GRID_WIDTH * GamePanel.GRID_HEIGHT;
+    }
+
+    private void winGame(){
+        System.out.println("Won game");
+        runGame = false;
+        gamePanel.showGameWon(this::restart);
+    }
+
     private void failGame(){
         System.out.println("Failed game");
         runGame = false;
@@ -75,6 +88,7 @@ public class Game implements Runnable{
     }
 
     public void restart(){
+        Movement.resetDirections();
         start();
     }
     

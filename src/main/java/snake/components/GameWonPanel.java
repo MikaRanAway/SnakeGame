@@ -1,30 +1,23 @@
 package snake.src.main.java.snake.components;
 
-import snake.src.main.java.snake.GUI;
-import snake.src.main.java.snake.Movement;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class GameOverPanel extends GameOverlayPanel {
+public class GameWonPanel extends GameOverlayPanel{
     Runnable restartGame;
 
-    GameOverPanel(){
+    GameWonPanel(){
         JPanel optionsGroup = new JPanel();
         optionsGroup.setPreferredSize(new Dimension(240, 140));
         optionsGroup.setBackground(Color.decode("#333333"));
         int optionsGroupPadding = 40;
         optionsGroup.setBorder(new EmptyBorder(optionsGroupPadding, optionsGroupPadding, optionsGroupPadding, optionsGroupPadding));
 
-
-        HeaderText headerText = new HeaderText("Game Over");
-
+        HeaderText headerText = new HeaderText("You Won");
 
         JButton button = new JButton();
-        button.setText("Try Again");
+        button.setText("Play Again");
         button.addActionListener(e -> {
             doGameOver();
         });

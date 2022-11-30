@@ -10,12 +10,13 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
-    public static final int UNIT_SIZE = 20;
+    public static final int UNIT_SIZE = 100;
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
     private Snake snake;
     private Apple apple;
     final GameOverPanel gameOverPanel = new GameOverPanel();
+    final GameWonPanel gameWonPanel = new GameWonPanel();
 
     public GamePanel(){
         ((FlowLayout) getLayout()).setVgap(0);
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel {
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
         add(gameOverPanel);
+        add(gameWonPanel);
         setDoubleBuffered(true); // for performance, apparently
     }
 
@@ -59,6 +61,10 @@ public class GamePanel extends JPanel {
         }
     }
 
+    public void showGameWon(Runnable restartGame) {
+        gameWonPanel.showPanel(restartGame);
+        repaint();
+    }
     public void showGameOver(Runnable restartGame){
         gameOverPanel.showPanel(restartGame);
         repaint();
@@ -87,5 +93,10 @@ public class GamePanel extends JPanel {
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
+
+    public int getSnakeLength(){
+        return snake.getLength();
+    }
+
 
 }

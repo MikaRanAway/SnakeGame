@@ -6,7 +6,7 @@ import java.util.Stack;
 
 
 public class Snake{
-    public static final int STARTING_BODY_LENGTH = 60;
+    public static final int STARTING_BODY_LENGTH = 20;
 
     private final SnakeHead head;
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>(); 
@@ -90,6 +90,10 @@ public class Snake{
         BodyPart lastBodyPart = snakeBody.peek();
         BodyPart newBodyPart = new BodyPart(lastBodyPart.getX(), lastBodyPart.getY()); //To bodyParts at same place (until snake moves)
         snakeBody.push(newBodyPart);
+    }
+
+    public int getLength(){
+        return snakeBody.size() + 1; // + Snake Head
     }
 
 

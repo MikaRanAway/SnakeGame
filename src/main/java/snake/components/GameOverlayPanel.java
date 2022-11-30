@@ -10,14 +10,13 @@ public class GameOverlayPanel extends JPanel {
 
     public GameOverlayPanel(){
         setBackground(backgroundColor);
-        ((FlowLayout) getLayout()).setVgap(0);
+        ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
         setVisible(false);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
+
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.VERTICAL;
-
     }
-
 }
