@@ -8,11 +8,7 @@ public class GameWonPanel extends GameOverlayPanel{
     Runnable restartGame;
 
     GameWonPanel(){
-        JPanel optionsGroup = new JPanel();
-        optionsGroup.setPreferredSize(new Dimension(240, 140));
-        optionsGroup.setBackground(Color.decode("#333333"));
-        int optionsGroupPadding = 40;
-        optionsGroup.setBorder(new EmptyBorder(optionsGroupPadding, optionsGroupPadding, optionsGroupPadding, optionsGroupPadding));
+        OverlayContentContainer contentContainer = new OverlayContentContainer();
 
         HeaderText headerText = new HeaderText("You Won");
 
@@ -22,9 +18,9 @@ public class GameWonPanel extends GameOverlayPanel{
             doGameOver();
         });
 
-        optionsGroup.add(headerText);
-        optionsGroup.add(button);
-        add(optionsGroup);
+        contentContainer.add(headerText);
+        contentContainer.add(button);
+        add(contentContainer);
     }
 
     public void showPanel(Runnable restartGame){

@@ -1,10 +1,7 @@
 package snake.src.main.java.snake.components;
 
 import snake.src.main.java.snake.Apple;
-import snake.src.main.java.snake.GUI;
-import snake.src.main.java.snake.Movement;
 import snake.src.main.java.snake.Snake;
-import snake.src.main.java.snake.components.GameOverPanel;
 
 import java.awt.*;
 import javax.swing.JPanel;

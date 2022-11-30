@@ -1,5 +1,6 @@
 package snake.src.main.java.snake;
 
+import snake.src.main.java.snake.components.GUI;
 import snake.src.main.java.snake.components.GamePanel;
 
 import java.util.concurrent.TimeUnit;
@@ -14,10 +15,12 @@ public class Game implements Runnable{
     private final GamePanel gamePanel;
     private Snake snake;
     private Apple apple;
-    int score;
-    private boolean runGame = true;
+
     Thread gameThread;
-    
+    private boolean runGame = true;
+
+    int score;
+
 
     //Constructor
     public Game(){
@@ -28,7 +31,7 @@ public class Game implements Runnable{
 
     //Methods
     public void start(){
-        gui.requestFocus();
+        gui.requestFocus(); //for keyboard listener to work
         apple = new Apple();
         snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
         gamePanel.initialize(snake, apple);
@@ -53,6 +56,8 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
+        //the order of these statements matters A LOT, be careful
+
         snake.move();
         if(snake.hasCollided(gamePanel)){
             failGame();

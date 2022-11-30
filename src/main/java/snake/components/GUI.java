@@ -1,5 +1,6 @@
-package snake.src.main.java.snake;
+package snake.src.main.java.snake.components;
 
+import snake.src.main.java.snake.Movement;
 import snake.src.main.java.snake.components.GamePanel;
 
 import javax.swing.*;

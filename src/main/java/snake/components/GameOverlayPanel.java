@@ -1,7 +1,5 @@
 package snake.src.main.java.snake.components;
 
-import snake.src.main.java.snake.GUI;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,9 +9,10 @@ public class GameOverlayPanel extends JPanel {
     public GameOverlayPanel(){
         setBackground(backgroundColor);
         ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
-        setVisible(false);
+        setVisible(false); //default is hidden
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
 
+        //Complicated stuff
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.CENTER;

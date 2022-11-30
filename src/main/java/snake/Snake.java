@@ -9,8 +9,7 @@ public class Snake{
     public static final int STARTING_BODY_LENGTH = 20;
 
     private final SnakeHead head;
-    private final Stack<BodyPart> snakeBody = new Stack<BodyPart>(); 
-
+    private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
 
     public Snake(int startX, int endX){
         head = new SnakeHead(startX, endX);
@@ -93,7 +92,7 @@ public class Snake{
     }
 
     public int getLength(){
-        return snakeBody.size() + 1; // + Snake Head
+        return snakeBody.size() + 1; // body + head
     }
 
 
