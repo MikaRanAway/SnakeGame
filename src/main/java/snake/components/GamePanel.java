@@ -18,7 +18,7 @@ public class GamePanel extends JPanel {
     final GameOverPanel gameOverPanel = new GameOverPanel();
     final GameWonPanel gameWonPanel = new GameWonPanel();
 
-    public GamePanel(){
+    public GamePanel() {
         ((FlowLayout) getLayout()).setVgap(0);
         setOpaque(true);
         setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
@@ -29,7 +29,7 @@ public class GamePanel extends JPanel {
         setDoubleBuffered(true); // for performance, apparently
     }
 
-    public void initialize(Snake snake, Apple apple){
+    public void initialize(Snake snake, Apple apple) {
         this.snake = snake;
         this.apple = apple;
     }
@@ -41,22 +41,22 @@ public class GamePanel extends JPanel {
 
         drawGridLines(graphics);
 
-        if(apple != null){ //TEMPORARY solution
+        if (apple != null) { //TEMPORARY solution
             apple.draw(graphics);
             snake.draw(graphics);
         }
     }
 
-    private void drawGridLines(Graphics graphics){
+    private void drawGridLines(Graphics graphics) {
         graphics.setColor(Color.DARK_GRAY);
 
         // draws vertical lines
-        for (int i = 1; i < GRID_WIDTH; i++){
+        for (int i = 1; i < GRID_WIDTH; i++) {
             graphics.drawLine(unitToPx(i), 0, unitToPx(i), GUI.CONTENT_HEIGHT);
         }
 
         // draws horizontal lines
-        for (int i = 1; i < GRID_HEIGHT; i++){
+        for (int i = 1; i < GRID_HEIGHT; i++) {
             graphics.drawLine(0, unitToPx(i), GUI.WINDOW_WIDTH, unitToPx(i));
         }
     }
@@ -65,7 +65,8 @@ public class GamePanel extends JPanel {
         gameWonPanel.showPanel(restartGame);
         repaint();
     }
-    public void showGameOver(Runnable restartGame){
+
+    public void showGameOver(Runnable restartGame) {
         gameOverPanel.showPanel(restartGame);
         repaint();
     }
@@ -73,30 +74,45 @@ public class GamePanel extends JPanel {
 
     //========== USED BY COMPONENTS ==========
 
-    public static int unitToPx(int units){
+    public static int unitToPx(int units) {
         return units * UNIT_SIZE;
     }
 
-    public boolean isSpaceWithinBounds(int x, int y){
+    public boolean isSpaceWithinBounds(int x, int y) {
         return (x < GRID_WIDTH) && (x >= 0) &&
                 (y < GRID_HEIGHT) && (y >= 0);
     }
 
-    public boolean isSpaceEmpty(int x, int y){
+    public boolean isSpaceEmpty(int x, int y) {
         boolean snakeOccupiesSpace = snake.doesSnakeOccupySpace(x, y);
-        boolean appleOccupiesSpace = (apple.getX() == x) && (apple.getY() == y);
+        boolean appleOccupiesSpace =
+                (apple.getX() == x) &&
+                (apple.getY() == y);
 
         return !(snakeOccupiesSpace || appleOccupiesSpace);
     }
 
-    public static void fillRect(Graphics graphics, int x, int y, Color color){
+    public static void fillRect(Graphics graphics, int x, int y, Color color) {
         graphics.setColor(color);
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
 
-    public int getSnakeLength(){
-        return snake.getLength();
+    public boolean noEmptySpots() {
+        System.out.printf("snakeLeng: %d ; gridSize: %d \n", snake.getLength(), GRID_HEIGHT * GRID_WIDTH);
+        return snake.getLength() >= GRID_HEIGHT * GRID_WIDTH;
     }
 
+    public void printAll() {
+        if (snake.getLength() > GRID_HEIGHT * GRID_WIDTH - 3) {
+            for (int x = 0; x < GRID_WIDTH; x++) {
+                for (int y = 0; y < GRID_HEIGHT; y++) {
+                    boolean appleOccupiesSpace =
+                            (apple.getX() == x) && (apple.getY() == y);
+                    System.out.printf("x: %d y: %d apple: %b head: %b body: %b \n",
+                            x, y, appleOccupiesSpace, snake.doesHeadOccupySpace(x, y), snake.doesHeadOccupySpace(x, y));
+                }
+            }
+        }
 
+    }
 }

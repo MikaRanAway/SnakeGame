@@ -35,6 +35,7 @@ public class Apple {
     }
 
     public void getEaten(GamePanel gamePanel){
+        if(gamePanel.noEmptySpots()) return;
         moveToEmptySpot(gamePanel);
     }
 
@@ -43,9 +44,12 @@ public class Apple {
         int x;
         int y;
 
+        gamePanel.printAll();
+
         do { 
             x = random.nextInt(GamePanel.GRID_WIDTH);
             y = random.nextInt(GamePanel.GRID_HEIGHT);
+            gamePanel.repaint();
         } while(!gamePanel.isSpaceEmpty(x, y));
 
         this.x = x;

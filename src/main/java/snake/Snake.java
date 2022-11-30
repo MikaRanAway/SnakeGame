@@ -108,21 +108,20 @@ public class Snake{
 
     //also used by Apple class
     public boolean doesSnakeOccupySpace(int x, int y){
-        boolean headOccupiesSpace = 
-            (x == head.getX()) || 
-            (y == head.getY());
-            
-        boolean bodyOccupiesSpace = doesBodyOccupySpace(x, y);
-        
-        return headOccupiesSpace || bodyOccupiesSpace;
+        return doesHeadOccupySpace(x, y) || doesBodyOccupySpace(x, y);
     }
 
-    private boolean doesBodyOccupySpace(int x, int y){
+    public boolean doesHeadOccupySpace(int x, int y){
+        return (x == head.getX()) &&
+                (y == head.getY());
+    }
+
+    public boolean doesBodyOccupySpace(int x, int y){
         for (BodyPart bodyPart : snakeBody){
             boolean bodyPartOccupiesSpace = 
                 (bodyPart.getX() == x) && 
                 (bodyPart.getY() == y);
-                
+
             if(bodyPartOccupiesSpace){
                 return true;
             }
