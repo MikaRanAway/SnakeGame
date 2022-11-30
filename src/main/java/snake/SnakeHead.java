@@ -42,5 +42,4 @@ public class SnakeHead {
     public void setY(int y) {
         this.y = y;
     }
-
 }
