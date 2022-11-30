@@ -17,6 +17,10 @@ public class SnakeHead {
         this.y = startY;
     }
 
+    public void draw(Graphics graphics){
+        GamePanel.fillRect(graphics, getX(), getY(), color);
+    }
+
 
     //========== GETTERS ==========
 
@@ -37,10 +41,6 @@ public class SnakeHead {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public void draw(Graphics graphics){
-        GamePanel.fillRect(graphics, getX(), getY(), color);
     }
 
 }

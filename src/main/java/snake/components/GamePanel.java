@@ -8,17 +8,18 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 100;
+
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
-    private Snake snake;
-    private Apple apple;
+
     final GameOverPanel gameOverPanel = new GameOverPanel();
     final GameWonPanel gameWonPanel = new GameWonPanel();
+    private Snake snake;
+    private Apple apple;
 
     public GamePanel() {
-        ((FlowLayout) getLayout()).setVgap(0);
+        ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
         setOpaque(true);
-        setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
         add(gameOverPanel);
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel {
 
         drawGridLines(graphics);
 
-        if (apple != null) { //TEMPORARY solution
+        if (apple != null && snake != null) {
             apple.draw(graphics);
             snake.draw(graphics);
         }

@@ -22,11 +22,11 @@ public class Snake{
     }
 
     public void draw(Graphics graphics){
-        head.draw(graphics);
-
         for(BodyPart bodyPart : snakeBody){
             bodyPart.draw(graphics);
         }
+
+        head.draw(graphics); //after body to look better after collision
     }
 
     //========== MOVEMENT ==========
@@ -73,11 +73,9 @@ public class Snake{
     //========== GROWTH ==========
 
     public boolean canEat(Apple apple){
-        boolean headIsOnApple = 
+        return
             (apple.getX() == head.getX()) &&
             (apple.getY() == head.getY());
-
-        return headIsOnApple;
     }
 
     public void eat(Apple apple, GamePanel gamePanel){
