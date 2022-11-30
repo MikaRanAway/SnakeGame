@@ -53,14 +53,14 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
-        if(hasWon()){
-            winGame();
-            return;
-        }
-
         snake.move();
         if(snake.hasCollided(gamePanel)){
             failGame();
+            return;
+        }
+
+        if(hasWon()){
+            winGame();
             return;
         }
 

@@ -98,21 +98,7 @@ public class GamePanel extends JPanel {
     }
 
     public boolean noEmptySpots() {
-        System.out.printf("snakeLeng: %d ; gridSize: %d \n", snake.getLength(), GRID_HEIGHT * GRID_WIDTH);
         return snake.getLength() >= GRID_HEIGHT * GRID_WIDTH;
     }
 
-    public void printAll() {
-        if (snake.getLength() > GRID_HEIGHT * GRID_WIDTH - 3) {
-            for (int x = 0; x < GRID_WIDTH; x++) {
-                for (int y = 0; y < GRID_HEIGHT; y++) {
-                    boolean appleOccupiesSpace =
-                            (apple.getX() == x) && (apple.getY() == y);
-                    System.out.printf("x: %d y: %d apple: %b head: %b body: %b \n",
-                            x, y, appleOccupiesSpace, snake.doesHeadOccupySpace(x, y), snake.doesHeadOccupySpace(x, y));
-                }
-            }
-        }
-
-    }
 }
