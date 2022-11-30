@@ -1,13 +1,14 @@
 package snake.src.main.java.snake;
 
-import javax.swing.*;
+import snake.src.main.java.snake.components.GamePanel;
+
 import java.util.concurrent.TimeUnit;
 
 
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 40; // in milliseconds
+    private static int TICK_SPEED = 300; // in milliseconds
 
     private final GUI gui;
     private final GamePanel gamePanel;

@@ -1,10 +1,13 @@
-package snake.src.main.java.snake;
+package snake.src.main.java.snake.components;
+
+import snake.src.main.java.snake.Apple;
+import snake.src.main.java.snake.GUI;
+import snake.src.main.java.snake.Movement;
+import snake.src.main.java.snake.Snake;
+import snake.src.main.java.snake.components.GameOverPanel;
 
 import java.awt.*;
 import javax.swing.JPanel;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 20;
@@ -18,15 +21,15 @@ public class GamePanel extends JPanel {
         this.snake = snake;
         this.apple = apple;
 
-        ((FlowLayout) getLayout()).setVgap(0);
-        setOpaque(true);
-        setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
+        //((FlowLayout) getLayout()).setVgap(0);
+        //setOpaque(true);
+        //setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
+        //add(gameOverPanel);
         setDoubleBuffered(true); // for performance, apparently
-        addKeyListener(new Movement()); // this will add and use the class for moving the snake based on keyboard input
         setFocusable(true); // this will make the keyboard be focused on the game window
-        add(gameOverPanel);
+        addKeyListener(new Movement()); // this will add and use the class for moving the snake based on keyboard input
     }
 
     // Called EVERY TIME JPanel "paints"

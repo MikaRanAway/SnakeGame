@@ -1,4 +1,6 @@
 package snake.src.main.java.snake;
+import snake.src.main.java.snake.components.GamePanel;
+
 import java.awt.*;
 import java.util.Stack;
 

@@ -1,4 +1,6 @@
-package snake.src.main.java.snake;
+package snake.src.main.java.snake.components;
+
+import snake.src.main.java.snake.GUI;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +18,7 @@ public class GameOverPanel extends JPanel {
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(backgroundColor);
         setLayout(new GridBagLayout());
+        setFocusable(false);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -35,7 +38,6 @@ public class GameOverPanel extends JPanel {
         textField.setOpaque(false);
         textField.setBorder(null);
         textField.setForeground(Color.decode("#eeeeee"));
-
 
         JButton button = new JButton();
         button.setText("Want to try again?");

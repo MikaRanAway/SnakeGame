@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 //this class is needed to use the method kePressed() which will wait for a key to be pressed on the keyboard
-class Movement extends KeyAdapter {
+public class Movement extends KeyAdapter {
     private static boolean leftDirection = false;
     private static boolean rightDirection = true;
     private static boolean upDirection = false;
@@ -29,6 +29,7 @@ class Movement extends KeyAdapter {
     //This is an Override method which should control the snakes movement based on the key pressed! source: internet XD
     @Override
     public void keyPressed(KeyEvent e){
+        System.out.println("feafeafea");
         int keyCode = e.getKeyCode();
         //if the UP Arrow key is pressed AND the snake is not moving down then the head will move UP
         if (keyCode == KeyEvent.VK_UP && !downDirection){
