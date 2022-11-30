@@ -1,0 +1,23 @@
+package snake.src.main.java.snake.components;
+
+import snake.src.main.java.snake.GUI;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GameOverlayPanel extends JPanel {
+    private static final Color backgroundColor = new Color(30, 30, 30, 140);
+
+    public GameOverlayPanel(){
+        setBackground(backgroundColor);
+        ((FlowLayout) getLayout()).setVgap(0);
+        setVisible(false);
+        setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.VERTICAL;
+
+    }
+
+}

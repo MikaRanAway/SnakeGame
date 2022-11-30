@@ -23,13 +23,17 @@ public class GUI {
 
 
     // Seperate method because Game.java needs a reference to the GamePanel and it wouldn't make sense to return it in render()
-    public GamePanel addGamePanel(Snake snake, Apple apple){
-        GamePanel gamePanel = new GamePanel(snake, apple);
+    public GamePanel addGamePanel(){
+        GamePanel gamePanel = new GamePanel();
         
         jFrame.add(gamePanel);
         jFrame.revalidate();
         jFrame.repaint();
 
         return gamePanel;
+    }
+
+    void requestFocus(){
+        jFrame.requestFocus();
     }
 }

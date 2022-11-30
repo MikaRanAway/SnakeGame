@@ -2,7 +2,6 @@ package snake.src.main.java.snake;
 
 import snake.src.main.java.snake.components.GamePanel;
 
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -13,27 +12,33 @@ public class Game implements Runnable{
 
     private final GUI gui;
     private final GamePanel gamePanel;
-    private final Snake snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
-    private final Apple apple = new Apple();
+    private Snake snake;
+    private Apple apple;
     int score;
     private boolean runGame = true;
+    Thread gameThread;
     
 
     //Constructor
     public Game(){
         gui = new GUI();
         gui.render();
-        gamePanel = gui.addGamePanel(snake, apple);
+        gamePanel = gui.addGamePanel();
     }
 
 
     //Methods
-
     public void start(){
+        gui.requestFocus();
+        apple = new Apple();
+        snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
+        gamePanel.initialize(snake, apple);
         apple.moveToEmptySpot(gamePanel);
+        Movement.resetDirections();
 
-        Thread thread = new Thread(this); // Game.java implements Runnable
-        thread.start();
+        runGame = true;
+        gameThread = new Thread(this); // Game.java implements Runnable
+        gameThread.start();
     }
 
     //This method will run in a different thread. The game window will be unresponsive otherwise.
@@ -41,7 +46,6 @@ public class Game implements Runnable{
     public void run() {
         while(runGame){
             try {
-                System.out.println(KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner());
                 TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
                 doGameTick();
             } catch (InterruptedException e) {
@@ -65,8 +69,13 @@ public class Game implements Runnable{
     }
 
     private void failGame(){
+        System.out.println("Failed game");
         runGame = false;
-        gamePanel.showGameOver();
+        gamePanel.showGameOver(this::restart);
+    }
+
+    public void restart(){
+        start();
     }
     
 

@@ -10,6 +10,14 @@ public class Movement extends KeyAdapter {
     private static boolean upDirection = false;
     private static boolean downDirection = false;
 
+
+    public static void resetDirections(){
+        leftDirection = false;
+        rightDirection = true;
+        upDirection = false;
+        downDirection = false;
+    }
+
     public static boolean isLeftDirection() {
         return leftDirection;
     }
@@ -29,7 +37,6 @@ public class Movement extends KeyAdapter {
     //This is an Override method which should control the snakes movement based on the key pressed! source: internet XD
     @Override
     public void keyPressed(KeyEvent e){
-        System.out.println("feafeafea");
         int keyCode = e.getKeyCode();
         //if the UP Arrow key is pressed AND the snake is not moving down then the head will move UP
         if (keyCode == KeyEvent.VK_UP && !downDirection){

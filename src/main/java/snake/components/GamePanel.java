@@ -13,14 +13,11 @@ public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 20;
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
-    final Snake snake;
-    final Apple apple;
+    private Snake snake;
+    private Apple apple;
     final GameOverPanel gameOverPanel = new GameOverPanel();
 
-    public GamePanel(Snake snake, Apple apple){
-        this.snake = snake;
-        this.apple = apple;
-
+    public GamePanel(){
         ((FlowLayout) getLayout()).setVgap(0);
         setOpaque(true);
         setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
@@ -28,9 +25,11 @@ public class GamePanel extends JPanel {
         setBackground(Color.BLACK);
         add(gameOverPanel);
         setDoubleBuffered(true); // for performance, apparently
-        setFocusable(true); // this will make the keyboard be focused on the game window
-        addKeyListener(new Movement()); // this will add and use the class for moving the snake based on keyboard input
-        requestFocus();
+    }
+
+    public void initialize(Snake snake, Apple apple){
+        this.snake = snake;
+        this.apple = apple;
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -39,8 +38,11 @@ public class GamePanel extends JPanel {
         super.paintComponent(graphics);
 
         drawGridLines(graphics);
-        apple.draw(graphics);
-        snake.draw(graphics);
+
+        if(apple != null){ //TEMPORARY solution
+            apple.draw(graphics);
+            snake.draw(graphics);
+        }
     }
 
     private void drawGridLines(Graphics graphics){
@@ -57,8 +59,8 @@ public class GamePanel extends JPanel {
         }
     }
 
-    public void showGameOver(){
-        gameOverPanel.showPanel();
+    public void showGameOver(Runnable restartGame){
+        gameOverPanel.showPanel(restartGame);
         repaint();
     }
 

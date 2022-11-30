@@ -9,25 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameOverPanel extends JPanel {
-    private static final Color backgroundColor = new Color(30, 30, 30, 140);
-
+public class GameOverPanel extends GameOverlayPanel {
+    Runnable restartGame;
 
     GameOverPanel(){
-        ((FlowLayout) getLayout()).setVgap(0);
-        setVisible(false);
-        setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
-        setBackground(backgroundColor);
-        setLayout(new GridBagLayout());
-        setFocusable(false);
-
-
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.fill = GridBagConstraints.VERTICAL;
-
-
         JPanel optionsGroup = new JPanel();
         optionsGroup.setPreferredSize(new Dimension(240, 140));
         optionsGroup.setBackground(Color.decode("#333333"));
@@ -47,7 +32,7 @@ public class GameOverPanel extends JPanel {
         JButton button = new JButton();
         button.setText("Want to try again?");
         button.addActionListener(e -> {
-            throw new RuntimeException("Too bad");
+            doGameOver();
         });
 
         optionsGroup.add(textField);
@@ -55,7 +40,13 @@ public class GameOverPanel extends JPanel {
         add(optionsGroup);
     }
 
-    public void showPanel(){
+    public void showPanel(Runnable restartGame){
+        this.restartGame = restartGame;
         setVisible(true);
+    }
+
+    public void doGameOver(){
+        setVisible(false);
+        restartGame.run();
     }
 }
