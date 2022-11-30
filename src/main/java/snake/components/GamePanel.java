@@ -21,9 +21,9 @@ public class GamePanel extends JPanel {
         this.snake = snake;
         this.apple = apple;
 
-        //((FlowLayout) getLayout()).setVgap(0);
-        //setOpaque(true);
-        //setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
+        ((FlowLayout) getLayout()).setVgap(0);
+        setOpaque(true);
+        setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
         //add(gameOverPanel);
@@ -57,7 +57,7 @@ public class GamePanel extends JPanel {
     }
 
     public void showGameOver(){
-        gameOverPanel.showPanel();
+        //gameOverPanel.showPanel();
         repaint();
     }
 

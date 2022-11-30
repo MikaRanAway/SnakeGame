@@ -20,10 +20,12 @@ public class GameOverPanel extends JPanel {
         setLayout(new GridBagLayout());
         setFocusable(false);
 
+
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.VERTICAL;
+
 
         JPanel optionsGroup = new JPanel();
         optionsGroup.setPreferredSize(new Dimension(240, 140));
@@ -31,14 +33,17 @@ public class GameOverPanel extends JPanel {
         int optionsGroupPadding = 40;
         optionsGroup.setBorder(new EmptyBorder(optionsGroupPadding, optionsGroupPadding, optionsGroupPadding, optionsGroupPadding));
 
-        Font textFieldFont = new Font("SansSerif", Font.BOLD, 30);
-        JTextField textField = new JTextField();
-        textField.setText("Game Over");
+
+        //Font textFieldFont = new Font("SansSerif", Font.BOLD, 30);
+        //JTextField textField = new JTextField();
+        /*textField.setText("Game Over");
         textField.setFont(textFieldFont);
         textField.setOpaque(false);
         textField.setBorder(null);
         textField.setForeground(Color.decode("#eeeeee"));
+        textField.setFocusable(false); */
 
+        /*
         JButton button = new JButton();
         button.setText("Want to try again?");
         button.addActionListener(e -> {
@@ -47,7 +52,7 @@ public class GameOverPanel extends JPanel {
 
         optionsGroup.add(textField);
         optionsGroup.add(button);
-
+        */
         add(optionsGroup);
     }
 
