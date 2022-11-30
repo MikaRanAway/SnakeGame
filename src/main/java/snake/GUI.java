@@ -18,6 +18,7 @@ public class GUI {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // The program will quit if you close the window
         jFrame.setResizable(true);
         jFrame.setVisible(true);
+        jFrame.addKeyListener(new Movement());
     }
 
 

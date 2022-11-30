@@ -26,10 +26,11 @@ public class GamePanel extends JPanel {
         setBounds(0, 0, GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
-        //add(gameOverPanel);
+        add(gameOverPanel);
         setDoubleBuffered(true); // for performance, apparently
         setFocusable(true); // this will make the keyboard be focused on the game window
         addKeyListener(new Movement()); // this will add and use the class for moving the snake based on keyboard input
+        requestFocus();
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -57,7 +58,7 @@ public class GamePanel extends JPanel {
     }
 
     public void showGameOver(){
-        //gameOverPanel.showPanel();
+        gameOverPanel.showPanel();
         repaint();
     }
 
