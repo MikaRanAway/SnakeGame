@@ -6,7 +6,7 @@ import java.util.Stack;
 
 
 public class Snake{
-    public static final int STARTING_BODY_LENGTH = 20;
+    public static final int STARTING_BODY_LENGTH = 3;
 
     private final SnakeHead head;
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
