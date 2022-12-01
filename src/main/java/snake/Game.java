@@ -31,6 +31,7 @@ public class Game implements Runnable{
 
     //Methods
     public void start(){
+        Movement.resetDirections();
         gui.requestFocus(); //for keyboard listener to work
         apple = new Apple();
         snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
@@ -57,7 +58,6 @@ public class Game implements Runnable{
 
     private void doGameTick(){
         //the order of these statements matters A LOT, be careful
-
         snake.move();
         Movement.directionWasUsed();
         if(snake.hasCollided(gamePanel)){
@@ -94,7 +94,6 @@ public class Game implements Runnable{
     }
 
     public void restart(){
-        Movement.resetDirections();
         start();
     }
     
