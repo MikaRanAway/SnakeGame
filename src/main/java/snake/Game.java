@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     //Variables
-    private static int TICK_SPEED = 500; // in milliseconds
+    private static int TICK_SPEED = 100; // in milliseconds
 
     private final GUI gui;
     private final GamePanel gamePanel;
@@ -59,6 +59,7 @@ public class Game implements Runnable{
         //the order of these statements matters A LOT, be careful
 
         snake.move();
+        Movement.directionWasUsed();
         if(snake.hasCollided(gamePanel)){
             failGame();
             return;

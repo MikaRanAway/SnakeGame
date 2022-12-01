@@ -7,7 +7,7 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
-    public static final int UNIT_SIZE = 100;
+    public static final int UNIT_SIZE = 25;
 
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
