@@ -8,6 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Game implements Runnable{
 
+    public static void setTickSpeed(int tickSpeed) {
+        TICK_SPEED = tickSpeed;
+    }
+
     //Variables
     private static int TICK_SPEED = 100; // in milliseconds
 
