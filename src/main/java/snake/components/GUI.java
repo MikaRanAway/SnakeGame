@@ -18,6 +18,7 @@ public class GUI extends JFrame{
         setResizable(false);
         setVisible(true);
         addKeyListener(new Movement());
+        setLocationRelativeTo(null);
     }
 
 

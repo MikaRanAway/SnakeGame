@@ -10,14 +10,17 @@ public class GameOverPanel extends GameOverlayPanel {
 
         HeaderText headerText = new HeaderText("Game Over");
 
-        JButton button = new JButton();
-        button.setText("Try Again");
-        button.addActionListener(e -> {
+        JButton TryAgain = new JButton();
+        TryAgain.setText("Try Again");
+        TryAgain.addActionListener(e -> {
             doGameOver();
         });
-
+        JButton ChooseDifficulty = new JButton();
+        ChooseDifficulty.setText("Choose Difficulty Level");
+        ChooseDifficulty.addActionListener(e -> doRestartDifficulty());
         contentContainer.add(headerText);
-        contentContainer.add(button);
+        contentContainer.add(TryAgain);
+        contentContainer.add(ChooseDifficulty);
         add(contentContainer);
     }
 
@@ -29,5 +32,8 @@ public class GameOverPanel extends GameOverlayPanel {
     public void doGameOver(){
         setVisible(false);
         restartGame.run();
+    }
+    public void doRestartDifficulty(){
+        DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
     }
 }
