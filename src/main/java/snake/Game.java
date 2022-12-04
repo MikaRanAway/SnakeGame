@@ -2,6 +2,7 @@ package snake.src.main.java.snake;
 
 import snake.src.main.java.snake.components.GUI;
 import snake.src.main.java.snake.components.GamePanel;
+import snake.src.main.java.snake.components.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,6 +42,8 @@ public class Game implements Runnable{
         snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
         gamePanel.initialize(snake, apple);
         apple.moveToEmptySpot(gamePanel);
+
+        // Stopwatch timer = new Stopwatch(); // starts the timer (there was an attempt)
 
         runGame = true;
         gameThread = new Thread(this); // Game.java implements Runnable
