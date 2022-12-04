@@ -11,15 +11,22 @@ public class GameWonPanel extends GameOverlayPanel{
         OverlayContentContainer contentContainer = new OverlayContentContainer();
 
         HeaderText headerText = new HeaderText("You Won");
+        NormalText time = new NormalText("Elapsed time: "); // end screen elapsed time text
 
-        JButton button = new JButton();
-        button.setText("Play Again");
-        button.addActionListener(e -> {
+        JButton TryAgain = new JButton();
+        TryAgain.setText("Try Again");
+        TryAgain.addActionListener(e -> {
             doGameOver();
         });
 
+        JButton ChooseDifficulty = new JButton();
+        ChooseDifficulty.setText("Choose Difficulty Level");
+        ChooseDifficulty.addActionListener(e -> doRestartDifficulty());
+
         contentContainer.add(headerText);
-        contentContainer.add(button);
+        contentContainer.add(time);
+        contentContainer.add(TryAgain);
+        contentContainer.add(ChooseDifficulty);
         add(contentContainer);
     }
 
@@ -31,5 +38,9 @@ public class GameWonPanel extends GameOverlayPanel{
     public void doGameOver(){
         setVisible(false);
         restartGame.run();
+    }
+
+    public void doRestartDifficulty(){
+        DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
     }
 }
