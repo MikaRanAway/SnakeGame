@@ -1,13 +1,13 @@
 package snake.src.main.java.snake.components;
 
 import snake.src.main.java.snake.Game;
+import snake.src.main.java.snake.components.Text.HeaderText;
+import snake.src.main.java.snake.components.Text.NormalText;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 
-public class GameWonPanel extends GameOverlayPanel{
-    GameWonPanel(){
+public class GameWonPanel extends GameOverlayPanel {
+    public GameWonPanel(){
         OverlayContentContainer contentContainer = new OverlayContentContainer();
 
         HeaderText headerText = new HeaderText("You Won");

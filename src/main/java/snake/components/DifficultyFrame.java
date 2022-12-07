@@ -1,7 +1,6 @@
 package snake.src.main.java.snake.components;
 
 import snake.src.main.java.snake.Difficulty;
-import snake.src.main.java.snake.DifficultyListener;
 import snake.src.main.java.snake.Game;
 
 import javax.swing.*;
@@ -16,8 +15,7 @@ public class DifficultyFrame extends JFrame implements ActionListener {
     private final JButton mediumBtn = new JButton("Medium");
     private final JButton hardBtn = new JButton("Hard");
 
-    DifficultyFrame(){
-
+    public DifficultyFrame(){
         setSize(600,600);
         getContentPane().setBackground(backgroundColor);
         setLayout(null);

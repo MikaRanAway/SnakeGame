@@ -1,4 +1,4 @@
-package snake.src.main.java.snake.components;
+package snake.src.main.java.snake.components.Text;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,5 +1,7 @@
 package snake.src.main.java.snake.components;
 
+import snake.src.main.java.snake.components.GameFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
