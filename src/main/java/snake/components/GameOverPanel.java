@@ -25,13 +25,14 @@ public class GameOverPanel extends GameOverlayPanel {
         chooseDifficulty.setText("Choose Difficulty Level");
         chooseDifficulty.addActionListener(e -> {
             setVisible(false);
-            DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
+            new DifficultyFrame();
         });
 
         contentContainer.add(headerText);
         contentContainer.add(time);
         contentContainer.add(tryAgain);
         contentContainer.add(chooseDifficulty);
+
         add(contentContainer);
     }
 

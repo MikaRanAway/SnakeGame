@@ -44,6 +44,7 @@ public class WelcomeFrame implements ActionListener {
 
         welcomeWindow.add(contentPanel);
         welcomeWindow.setVisible(true);
+        welcomeWindow.requestFocus();
     }
 
     @Override

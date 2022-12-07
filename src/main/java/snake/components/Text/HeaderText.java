@@ -9,7 +9,7 @@ public class HeaderText extends JTextField {
     public HeaderText(String text){
         setText(text);
         setFont(myFont);
-        setOpaque(false);
+        setOpaque(false); //no background
         setBorder(null);
         setForeground(Color.decode("#eeeeee"));
     }

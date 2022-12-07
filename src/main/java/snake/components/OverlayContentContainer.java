@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class OverlayContentContainer extends JPanel {
     public OverlayContentContainer(){
-        setPreferredSize(new Dimension(240, 180));
+        setPreferredSize(new Dimension(270, 200));
         setBackground(Color.decode("#333333"));
         int padding = 40;
         EmptyBorder emptyBorder = new EmptyBorder(padding, padding, padding, padding);

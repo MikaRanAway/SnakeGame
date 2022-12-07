@@ -9,7 +9,7 @@ public class NormalText extends JTextField {
     public NormalText(String text){
         setText(text);
         setFont(normalFont);
-        setOpaque(false);
+        setOpaque(false); //no background
         setBorder(null);
         setForeground(Color.decode("#eeeeee"));
     }
