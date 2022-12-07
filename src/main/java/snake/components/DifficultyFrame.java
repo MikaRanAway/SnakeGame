@@ -8,18 +8,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DifficultyFrame implements ActionListener {
-    JFrame difficultyWindow = new JFrame();
-    JButton Easy = new JButton("Easy");
-    JButton Medium = new JButton("Medium");
-    JButton Hard = new JButton("Hard");
+    private final JFrame difficultyWindow = new JFrame();
+    private final JButton Easy = new JButton("Easy");
+    private final JButton Medium = new JButton("Medium");
+    private final JButton Hard = new JButton("Hard");
 
     DifficultyFrame(){
         Easy.setBounds(225,100,150,50);
         Medium.setBounds(225,250,150,50);
         Hard.setBounds(225,400,150,50);
+
         Easy.addActionListener(this);
         Medium.addActionListener(this);
         Hard.addActionListener(this);
+
         difficultyWindow.setSize(600,600);
         difficultyWindow.getContentPane().setBackground(Color.decode("#3333"));
         difficultyWindow.setLayout(null);
@@ -29,7 +31,6 @@ public class DifficultyFrame implements ActionListener {
         difficultyWindow.add(Easy);
         difficultyWindow.add(Medium);
         difficultyWindow.add(Hard);
-
     }
 
     @Override
