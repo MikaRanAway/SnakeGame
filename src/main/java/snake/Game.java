@@ -1,22 +1,17 @@
 package snake.src.main.java.snake;
 
-import snake.src.main.java.snake.components.GUI;
+import snake.src.main.java.snake.components.GameFrame;
 import snake.src.main.java.snake.components.GamePanel;
-import snake.src.main.java.snake.components.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
 
 
 public class Game implements Runnable{
 
-    public static void setTickSpeed(int tickSpeed) {
-        TICK_SPEED = tickSpeed;
-    }
-
     //Variables
-    private static int TICK_SPEED = 100; // in milliseconds
+    private int tickSpeed = 100; // in milliseconds
 
-    private final GUI gui;
+    private final GameFrame gui;
     private final GamePanel gamePanel;
     private Snake snake;
     private Apple apple;
@@ -27,14 +22,28 @@ public class Game implements Runnable{
     int score;
 
 
-    //Constructor
-    public Game(){
-        gui = new GUI();
+    //========== "SINGLETON PATTERN" ==========
+
+    private static Game instance;
+    public static Game getInstance(){
+        if(instance == null){
+            instance = new Game();
+        }
+
+        return instance;
+    }
+    private Game(){
+        gui = new GameFrame();
         gamePanel = gui.addGamePanel();
     }
 
 
-    //Methods
+    //=========== SETTERS ===========
+    public void setDifficulty(Difficulty difficulty) {
+        tickSpeed = difficulty.tickDelay;
+    }
+
+
     public void start(){
         Movement.resetDirections();
         gui.requestFocus(); //for keyboard listener to work
@@ -55,7 +64,7 @@ public class Game implements Runnable{
     public void run() {
         while(runGame){
             try {
-                TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
+                TimeUnit.MILLISECONDS.sleep(tickSpeed);
                 doGameTick();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -64,7 +73,6 @@ public class Game implements Runnable{
     }
 
     private void doGameTick(){
-        //the order of these statements matters A LOT, be careful
         snake.move();
         Movement.directionWasUsed();
         if(snake.hasCollided(gamePanel)){
@@ -91,17 +99,13 @@ public class Game implements Runnable{
     private void winGame(){
         System.out.println("Won game");
         runGame = false;
-        gamePanel.showGameWon(this::restart);
+        gamePanel.showGameWon();
     }
 
     private void failGame(){
         System.out.println("Failed game");
         runGame = false;
-        gamePanel.showGameOver(this::restart);
-    }
-
-    public void restart(){
-        start();
+        gamePanel.showGameOver();
     }
     
 

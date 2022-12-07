@@ -1,12 +1,12 @@
 package snake.src.main.java.snake.components;
 
+import snake.src.main.java.snake.Game;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class GameWonPanel extends GameOverlayPanel{
-    Runnable restartGame;
-
     GameWonPanel(){
         OverlayContentContainer contentContainer = new OverlayContentContainer();
 
@@ -30,17 +30,17 @@ public class GameWonPanel extends GameOverlayPanel{
         add(contentContainer);
     }
 
-    public void showPanel(Runnable restartGame){
-        this.restartGame = restartGame;
+    public void showPanel(){
         setVisible(true);
     }
 
     public void doGameOver(){
         setVisible(false);
-        restartGame.run();
+        Game.getInstance().start();
     }
 
     public void doRestartDifficulty(){
+        setVisible(false);
         DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
     }
 }

@@ -6,8 +6,6 @@ public final class Main{
     public static void main(String[] args) {
         System.out.println("~~~~<  *");
         WelcomeFrame snakeGame= new WelcomeFrame();
-        //Game game = new Game();
-        //game.start();
     }
 
 }

@@ -1,12 +1,15 @@
 package snake.src.main.java.snake.components;
 
+import snake.src.main.java.snake.Difficulty;
+import snake.src.main.java.snake.DifficultyListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class WelcomeFrame extends JFrame implements ActionListener {
+public class WelcomeFrame extends JFrame implements ActionListener, DifficultyListener {
     JFrame welcomeWindow = new JFrame();
     JButton difficultyLevel = new JButton("Difficulty Level");
     JLabel welcomeMessage = new JLabel("Welcome to Wild Snake Game");
@@ -30,5 +33,10 @@ public class WelcomeFrame extends JFrame implements ActionListener {
             welcomeWindow.dispose();
             DifficultyFrame frame = new DifficultyFrame();
         }
+    }
+
+    @Override
+    public void onDifficultySet(Difficulty difficulty) {
+
     }
 }

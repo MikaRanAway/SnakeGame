@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 25;
 
-    public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
-    public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
+    public static final int GRID_WIDTH = GameFrame.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
+    public static final int GRID_HEIGHT = GameFrame.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
 
     final GameOverPanel gameOverPanel = new GameOverPanel();
     final GameWonPanel gameWonPanel = new GameWonPanel();
@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
     public GamePanel() {
         ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
         setOpaque(true);
-        setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
+        setPreferredSize(new Dimension(GameFrame.WINDOW_WIDTH, GameFrame.CONTENT_HEIGHT));
         setBackground(Color.BLACK);
         add(gameOverPanel);
         add(gameWonPanel);
@@ -50,22 +50,22 @@ public class GamePanel extends JPanel {
 
         // draws vertical lines
         for (int i = 1; i < GRID_WIDTH; i++) {
-            graphics.drawLine(unitToPx(i), 0, unitToPx(i), GUI.CONTENT_HEIGHT);
+            graphics.drawLine(unitToPx(i), 0, unitToPx(i), GameFrame.CONTENT_HEIGHT);
         }
 
         // draws horizontal lines
         for (int i = 1; i < GRID_HEIGHT; i++) {
-            graphics.drawLine(0, unitToPx(i), GUI.WINDOW_WIDTH, unitToPx(i));
+            graphics.drawLine(0, unitToPx(i), GameFrame.WINDOW_WIDTH, unitToPx(i));
         }
     }
 
-    public void showGameWon(Runnable restartGame) {
-        gameWonPanel.showPanel(restartGame);
+    public void showGameWon() {
+        gameWonPanel.showPanel();
         repaint();
     }
 
-    public void showGameOver(Runnable restartGame) {
-        gameOverPanel.showPanel(restartGame);
+    public void showGameOver() {
+        gameOverPanel.showPanel();
         repaint();
     }
 

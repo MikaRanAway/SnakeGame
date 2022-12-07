@@ -1,5 +1,7 @@
 package snake.src.main.java.snake.components;
 
+import snake.src.main.java.snake.Difficulty;
+import snake.src.main.java.snake.DifficultyListener;
 import snake.src.main.java.snake.Game;
 
 import javax.swing.*;
@@ -15,6 +17,7 @@ public class DifficultyFrame extends JFrame implements ActionListener {
     private final JButton hardBtn = new JButton("Hard");
 
     DifficultyFrame(){
+
         setSize(600,600);
         getContentPane().setBackground(backgroundColor);
         setLayout(null);
@@ -37,17 +40,17 @@ public class DifficultyFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Game game = Game.getInstance();
+
         if (e.getSource() == easyBtn){
-            dispose();
-            Game.setTickSpeed(200);
+            game.setDifficulty(Difficulty.EASY);
         }else if (e.getSource() == mediumBtn){
-            dispose();
-            Game.setTickSpeed(100);
+            game.setDifficulty(Difficulty.MEDIUM);
         }else if (e.getSource() == hardBtn){
-            dispose();
-            Game.setTickSpeed(50);
+            game.setDifficulty(Difficulty.HARD);
         }
-        Game game = new Game();
-        game.start();
+
+        dispose();
+        Game.getInstance().start();
     }
 }
