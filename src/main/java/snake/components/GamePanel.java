@@ -3,8 +3,8 @@ package snake.src.main.java.snake.components;
 import snake.src.main.java.snake.Apple;
 import snake.src.main.java.snake.Snake;
 
+import javax.swing.*;
 import java.awt.*;
-import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
     public static final int UNIT_SIZE = 25;
@@ -14,6 +14,7 @@ public class GamePanel extends JPanel {
 
     final GameOverPanel gameOverPanel = new GameOverPanel();
     final GameWonPanel gameWonPanel = new GameWonPanel();
+    GameplayUI gameplayUI = new GameplayUI();
     private Snake snake;
     private Apple apple;
 
@@ -24,12 +25,15 @@ public class GamePanel extends JPanel {
         setBackground(Color.BLACK);
         add(gameOverPanel);
         add(gameWonPanel);
+        add(gameplayUI);
+        //TODO: work here for positioning issues
         setDoubleBuffered(true); // for performance, apparently
     }
 
     public void initialize(Snake snake, Apple apple) {
         this.snake = snake;
         this.apple = apple;
+        gameplayUI.showPanel();
     }
 
     // Called EVERY TIME JPanel "paints"
@@ -38,6 +42,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(graphics);
 
         drawGridLines(graphics);
+        gameplayUI.updatePanel();
 
         if (apple != null && snake != null) {
             apple.draw(graphics);

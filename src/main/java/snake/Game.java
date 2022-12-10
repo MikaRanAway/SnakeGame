@@ -43,7 +43,7 @@ public class Game implements Runnable{
         gamePanel.initialize(snake, apple);
         apple.moveToEmptySpot(gamePanel);
 
-        // Stopwatch timer = new Stopwatch(); // starts the timer (there was an attempt)
+        Stopwatch.startTimer();         // starts the timer
 
         runGame = true;
         gameThread = new Thread(this); // Game.java implements Runnable
