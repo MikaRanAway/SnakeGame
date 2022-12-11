@@ -4,16 +4,18 @@ import snake.src.main.java.snake.components.GamePanel;
 
 import java.awt.*;
 
+import static snake.src.main.java.snake.components.CustomizationFrame.colorRandom;
+import static snake.src.main.java.snake.components.CustomizationFrame.randomColor;
+
 public class BodyPart {
     private int x;
     private int y;
-    private final Color color = Color.decode("#00dd00");
+    private Color color = UniversalColor.colorBody;
 
     public BodyPart(int x, int y){
         this.x = x;
         this.y = y;
     }
-
 
     //========== GETTERS ==========
 
@@ -35,7 +37,6 @@ public class BodyPart {
     public void setY(int y) {
         this.y = y;
     }
-
 
     public void draw(Graphics graphics){
         GamePanel.fillRect(graphics, getX(), getY(), color);
