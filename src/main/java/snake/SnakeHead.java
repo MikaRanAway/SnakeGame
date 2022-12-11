@@ -4,13 +4,13 @@ import snake.src.main.java.snake.components.GamePanel;
 
 import java.awt.*;
 
+import static snake.src.main.java.snake.UniversalColor.colorHead;
+
 public class SnakeHead {
 
     private int x;
     private int y;
-    private final Color color = Color.decode("#00ff00");
-
-    //sad and empty
+    private Color color = colorHead;
 
     public SnakeHead(int startX, int startY){
         this.x = startX;
