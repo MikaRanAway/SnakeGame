@@ -9,7 +9,7 @@ import java.util.Random;
 public class Apple {
     private int x;
     private int y;
-    private final Color color = Color.red;
+    private Color color = Color.red;
 
     //========== CONSTRUCTOR ==========
 
