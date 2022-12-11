@@ -4,6 +4,9 @@ import snake.src.main.java.snake.components.GamePanel;
 import java.awt.*;
 import java.util.Stack;
 
+import static snake.src.main.java.snake.components.CustomizationFrame.colorRandom;
+import static snake.src.main.java.snake.components.CustomizationFrame.randomColor;
+
 
 public class Snake{
     public static final int STARTING_BODY_LENGTH = 3;
@@ -11,13 +14,21 @@ public class Snake{
     private final SnakeHead head;
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
 
+    //Constructor
     public Snake(int startX, int endX){
+        if(colorRandom){
+            randomColor();
+        }
         head = new SnakeHead(startX, endX);
 
         //creates initial body parts
         for(int i = 1; i <= STARTING_BODY_LENGTH; i++){
+            if(colorRandom){
+                randomColor();
+            }
             BodyPart bodyPart = new BodyPart(startX-i, endX);
             snakeBody.push(bodyPart);
+
         }
     }
 
@@ -81,6 +92,12 @@ public class Snake{
     public void eat(Apple apple, GamePanel gamePanel){
         apple.getEaten(gamePanel);
         grow();
+    }
+
+    public void eatRandomColor(Apple apple, GamePanel gamePanel){
+        apple.getEaten(gamePanel);
+        grow();
+        randomColor();
     }
 
     private void grow(){
