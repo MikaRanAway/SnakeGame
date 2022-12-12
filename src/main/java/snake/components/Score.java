@@ -1,16 +1,16 @@
-package src.main.java.snake.components;
+package snake.src.main.java.snake.components;
 
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class score {
+public class Score {
     Font font;
     private int points;
     private int timesIncremented;
 
-    public score () {
+    public Score() {
         points = 0;
         timesIncremented = 1;
         font = new Font("Arial", Font.PLAIN, 36);
