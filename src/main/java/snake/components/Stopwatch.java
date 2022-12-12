@@ -10,6 +10,6 @@ public class Stopwatch {
     public static double elapsedTimeSeconds(){
         long now = System.currentTimeMillis();                    // gets the current time
         double elapsedTime = (now - startTime) / 1000.0;          // calculates elapsed time and converts it to seconds (with decimals)
-        return elapsedTime;                                 // truncated time
+        return elapsedTime;
     }
 }
