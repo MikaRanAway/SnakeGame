@@ -47,7 +47,7 @@ public class GamePanel extends JPanel {
     }
 
     private void drawGridLines(Graphics graphics) {
-        graphics.setColor(Color.DARK_GRAY);
+        graphics.setColor(Settings.getInstance().gamePanelLineColor);
 
         // draws vertical lines
         for (int i = 1; i < GRID_WIDTH; i++) {
