@@ -1,5 +1,8 @@
 package org.example.components;
 
+import org.example.components.Text.HeaderText;
+import org.example.components.Text.NormalText;
+
 import javax.swing.*;
 
 public class GameOverPanel extends GameOverlayPanel {

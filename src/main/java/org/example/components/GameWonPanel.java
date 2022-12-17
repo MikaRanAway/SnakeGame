@@ -1,5 +1,8 @@
 package org.example.components;
 
+import org.example.components.Text.HeaderText;
+import org.example.components.Text.NormalText;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
