@@ -1,7 +1,2 @@
-out/
 
-.gradle/
-.idea/
-*.class
-.DS_Store
-
+.DS_STORE
