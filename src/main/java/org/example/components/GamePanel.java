@@ -1,6 +1,7 @@
 package org.example.components;
 
 import org.example.Apple;
+import org.example.Settings;
 import org.example.Snake;
 
 import java.awt.*;
@@ -21,7 +22,7 @@ public class GamePanel extends JPanel {
         ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
         setOpaque(true);
         setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
-        setBackground(Color.BLACK);
+        setBackground(Settings.getInstance().gamePanelBackground);
         add(gameOverPanel);
         add(gameWonPanel);
         setDoubleBuffered(true); // for performance, apparently
