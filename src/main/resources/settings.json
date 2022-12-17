@@ -1,8 +1,4 @@
-[
-  {
-    "background-color": "#aaffaa"
-  },
-  {
-    "apple-color": "#ffffff"
-  }
-]
+{
+  "background-color": "#ffffff",
+  "apple-color": "#00ff00"
+}
