@@ -1,5 +1,3 @@
-
-# Just so that our individual IDE configurations don't sync and mess something up for someone else
 out/
 
 *.class
