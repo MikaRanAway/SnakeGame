@@ -18,12 +18,12 @@ public class CustomizationFrame implements ActionListener {
     //Universal Random Indicator
     public static boolean colorRandom = false;
 
-    //Buttons
+    //========== Creating the Customization frame components (Buttons) ==========
     JButton staticColors = new JButton("Static Colors");
     JButton random = new JButton("Random");
     JButton invisible = new JButton("Invisible");
 
-    //Constructor
+    //========== Defining the Customization frame components(constructors) ==========
     CustomizationFrame(){
         staticColors.setBounds(225,100,150,50);
         random.setBounds(225,250,150,50);
@@ -41,22 +41,26 @@ public class CustomizationFrame implements ActionListener {
         customizationFrame.add(random);
         customizationFrame.add(invisible);
     }
-
+    //========== Three different buttons to set the snake's colour ==========
+    //========== Choosing the static colour option will take the user to a another Customization colour frame  ==========
     @Override
     public void actionPerformed(ActionEvent e) {
     if(e.getSource() == staticColors){
         customizationFrame.dispose();
         StaticColorsFrame staticColorsFrame = new StaticColorsFrame();
     }
+
+    //========== Choosing random colour will take the user to the difficulty frame==========
     if(e.getSource() == random) {
         colorRandom = true;
         DifficultyFrame difficultyFrame = new DifficultyFrame();
         customizationFrame.dispose();
     }
 
+    //========== Choosing invisible colour(Colour the match the background) will take the user to the difficulty frame==========
     if(e.getSource() == invisible){
         UniversalColor universalColor = new UniversalColor();
-        universalColor.setColorHead(Color.BLACK, Color.BLACK);
+        universalColor.setColorHead(Color.WHITE, Color.WHITE);
         customizationFrame.dispose();
         DifficultyFrame difficultyFrame = new DifficultyFrame();
     }

@@ -95,22 +95,17 @@ public class Game implements Runnable{
     private void winGame(){
         System.out.println("Won game");
         runGame = false;
-        gamePanel.showGameWon(this::restart);
+        gamePanel.showGameWon(this::restart); // :: method reference
     }
 
     private void failGame(){
         System.out.println("Failed game");
         runGame = false;
-        gamePanel.showGameOver(this::restart);
+        gamePanel.showGameOver(this::restart);  // :: method reference
     }
 
     public void restart(){
         start();
     }
-    
 
-    //Score Calculation
-    public int scoreCalc(){
-        return 0;
-    }
 }

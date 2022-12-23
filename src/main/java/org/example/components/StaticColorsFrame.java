@@ -14,7 +14,7 @@ public class StaticColorsFrame implements ActionListener {
     //Frame
     JFrame staticColorFrame = new JFrame();
 
-    //Buttons
+    //========== Creating the Static colours frame components (Buttons) ==========
     JButton red = new JButton("Red");
     JButton blue = new JButton("Blue");
     JButton green = new JButton("Green");
@@ -22,7 +22,7 @@ public class StaticColorsFrame implements ActionListener {
     JButton white = new JButton("White");
     JButton purple = new JButton("Purple");
 
-    //Constructor
+    //========== Defining the Static Colours frame components(constructors) ==========
     StaticColorsFrame(){
         red.setBounds(125,100,150,50);
         blue.setBounds(125,250,150,50);
@@ -50,6 +50,7 @@ public class StaticColorsFrame implements ActionListener {
         staticColorFrame.add(purple);
     }
 
+    //========== The user can choose between six different colours for the snake==========
     @Override
     public void actionPerformed(ActionEvent e) {
     Color headColor = null;
@@ -88,6 +89,7 @@ public class StaticColorsFrame implements ActionListener {
         UniversalColor universalColor = new UniversalColor();
         universalColor.setColorHead(headColor, bodyColor);
 
+        //========== After choosing the snake colour, the user will be moved to the difficulty level frame ==========
         DifficultyFrame DifficultyFrame = new DifficultyFrame();
         staticColorFrame.dispose();
     }

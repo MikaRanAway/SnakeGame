@@ -38,7 +38,7 @@ public class Apple {
         if(gamePanel.noEmptySpots()) return;
         moveToEmptySpot(gamePanel);
     }
-
+    // This method ensures that the new apple will not be generated on the same unit where snake occupies.
     public void moveToEmptySpot(GamePanel gamePanel){
         Random random = new Random();
         int x;

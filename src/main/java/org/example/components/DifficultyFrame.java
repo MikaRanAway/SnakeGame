@@ -8,11 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DifficultyFrame implements ActionListener {
+
     JFrame difficultyWindow = new JFrame();
+    //========== Creating the Difficulty Frame components ==========
     JButton Easy = new JButton("Easy");
     JButton Medium = new JButton("Medium");
     JButton Hard = new JButton("Hard");
 
+    //========== Defining the Difficulty Frame components(constructors) ==========
     DifficultyFrame(){
         Easy.setBounds(225,100,150,50);
         Medium.setBounds(225,250,150,50);
@@ -31,6 +34,7 @@ public class DifficultyFrame implements ActionListener {
         difficultyWindow.add(Hard);
     }
 
+    //========== Choosing the difficulty level where each level will set the snake at a certain speed ==========
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==Easy){
             difficultyWindow.dispose();
@@ -42,6 +46,7 @@ public class DifficultyFrame implements ActionListener {
             difficultyWindow.dispose();
             Game.setTickSpeed(50);
         }
+        //========== After choosing the difficulty level, the game will start ==========
         Game game = new Game();
         game.start();
     }

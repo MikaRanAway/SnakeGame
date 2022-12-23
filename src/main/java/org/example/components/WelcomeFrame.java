@@ -7,10 +7,14 @@ import java.awt.event.ActionListener;
 
 
 public class WelcomeFrame extends JFrame implements ActionListener {
+    //Frames
     JFrame welcomeWindow = new JFrame();
+
+    //========== Creating the Welcome Frame components (Buttons) ==========
     JButton difficultyLevel = new JButton("Difficulty Level");
     JButton customization = new JButton(("Customization"));
     JLabel welcomeMessage = new JLabel("Welcome to Wild Snake Game");
+    //========== Defining the interface components ==========
     public WelcomeFrame(){
         welcomeWindow.setSize(600,600);
         welcomeWindow.getContentPane().setBackground(Color.decode("#333333"));
@@ -28,6 +32,7 @@ public class WelcomeFrame extends JFrame implements ActionListener {
         customization.addActionListener(this);
     }
 
+    //========== Either moving Difficulty frame or to Customization frame ==========
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() ==difficultyLevel){

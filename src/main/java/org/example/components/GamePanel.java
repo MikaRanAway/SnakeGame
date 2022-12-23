@@ -8,7 +8,7 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
-    public static final int UNIT_SIZE = 25;
+    public static final int UNIT_SIZE = 25;    //Unit size of each square
 
     public static final int GRID_WIDTH = GUI.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GUI.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
@@ -25,7 +25,7 @@ public class GamePanel extends JPanel {
         setBackground(Settings.getInstance().gamePanelBackground);
         add(gameOverPanel);
         add(gameWonPanel);
-        setDoubleBuffered(true); // for performance, apparently
+        setDoubleBuffered(true); // for performance, apparently (Reduce flickering issues)
     }
 
     public void initialize(Snake snake, Apple apple) {
@@ -70,10 +70,9 @@ public class GamePanel extends JPanel {
         repaint();
     }
 
-
     //========== USED BY COMPONENTS ==========
 
-    public static int unitToPx(int units) {
+    public static int unitToPx(int units) {        //Unit to Pixels
         return units * UNIT_SIZE;
     }
 
@@ -97,6 +96,7 @@ public class GamePanel extends JPanel {
     }
 
     public boolean noEmptySpots() {
+
         return snake.getLength() >= GRID_HEIGHT * GRID_WIDTH;
     }
 

@@ -17,13 +17,11 @@ public class GameOverPanel extends GameOverlayPanel {
 
         JButton TryAgain = new JButton();
         TryAgain.setText("Try Again");
-        TryAgain.addActionListener(e -> {
-            doGameOver();
-        });
+        TryAgain.addActionListener(e -> doGameOver());  //e is an action event. Choosing  try again, the game will restart
 
         JButton ChooseDifficulty = new JButton();
         ChooseDifficulty.setText("Choose Difficulty Level");
-        ChooseDifficulty.addActionListener(e -> doRestartDifficulty());
+        ChooseDifficulty.addActionListener(e -> doRestartDifficulty()); //e is an action event.Choosing restart difficulty
 
         contentContainer.add(headerText);
         contentContainer.add(time);

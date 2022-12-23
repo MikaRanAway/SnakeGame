@@ -27,8 +27,8 @@ public class GUI extends JFrame{
         GamePanel gamePanel = new GamePanel();
         
         add(gamePanel);
-        revalidate();
-        repaint();
+        revalidate();   //Ensure that the layout and appearance are updated
+        repaint();      //Ensure that the layout and appearance are updated
 
         return gamePanel;
     }
