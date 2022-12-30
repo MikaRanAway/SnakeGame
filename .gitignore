@@ -2,3 +2,5 @@
 .DS_STORE
 .gradle
 .idea
+build
+bin
