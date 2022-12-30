@@ -38,10 +38,10 @@ public class Movement extends KeyAdapter {
         downDirection = false;
     }
 
-    //This is an Override method which should control the snakes movement based on the key pressed! source: internet XD
+    //This is an Override method which should control the snakes movement based on the key pressed!
     @Override
     public void keyPressed(KeyEvent e){
-        if(!hasUsedNewDirection){
+        if(!hasUsedNewDirection){ //prevents the snake from being able to go back into itself from too quick inputs
             return;
         }
 

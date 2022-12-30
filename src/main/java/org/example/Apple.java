@@ -9,13 +9,8 @@ import java.util.Random;
 public class Apple {
     private int x;
     private int y;
-    private Color color = Settings.getInstance().appleColor;
+    private final Color color = Settings.getInstance().appleColor;
 
-    //========== CONSTRUCTOR ==========
-
-    public Apple(){
-        
-    }
 
     //========== GETTERS ==========
 

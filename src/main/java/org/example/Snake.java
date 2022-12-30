@@ -4,8 +4,8 @@ import org.example.components.GamePanel;
 import java.awt.*;
 import java.util.Stack;
 
-import static org.example.UniversalColor.isRandomColor;
-import static org.example.UniversalColor.randomizeColors;
+import static org.example.SnakeColorSettings.isRandomColor;
+import static org.example.SnakeColorSettings.randomizeColors;
 
 
 public class Snake{

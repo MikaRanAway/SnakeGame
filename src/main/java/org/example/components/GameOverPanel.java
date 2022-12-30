@@ -7,26 +7,26 @@ import javax.swing.*;
 
 public class GameOverPanel extends GameOverlayPanel {
     Runnable restartGame;
-    private NormalText time;
+    private NormalText timeDisplay;
 
     GameOverPanel(){
         OverlayContentContainer contentContainer = new OverlayContentContainer();
 
         HeaderText headerText = new HeaderText("Game Over");
-        time = new NormalText("Elapsed time: "); // I have to initialize it as something
+        timeDisplay = new NormalText("Elapsed time: "); // I have to initialize it as something
 
-        JButton TryAgain = new JButton();
-        TryAgain.setText("Try Again");
-        TryAgain.addActionListener(e -> doGameOver());  //e is an action event. Choosing  try again, the game will restart
+        JButton tryAgainBtn = new JButton();
+        tryAgainBtn.setText("Try Again");
+        tryAgainBtn.addActionListener(e -> doGameOver());  //e is an action event. Choosing  try again, the game will restart
 
-        JButton ChooseDifficulty = new JButton();
-        ChooseDifficulty.setText("Choose Difficulty Level");
-        ChooseDifficulty.addActionListener(e -> doRestartDifficulty()); //e is an action event.Choosing restart difficulty
+        JButton chooseDifficultyBtn = new JButton();
+        chooseDifficultyBtn.setText("Choose Difficulty Level");
+        chooseDifficultyBtn.addActionListener(e -> doRestartDifficulty()); //e is an action event.Choosing restart difficulty
 
         contentContainer.add(headerText);
-        contentContainer.add(time);
-        contentContainer.add(TryAgain);
-        contentContainer.add(ChooseDifficulty);
+        contentContainer.add(timeDisplay);
+        contentContainer.add(tryAgainBtn);
+        contentContainer.add(chooseDifficultyBtn);
         add(contentContainer);
     }
 
@@ -34,8 +34,8 @@ public class GameOverPanel extends GameOverlayPanel {
         this.restartGame = restartGame;
 
         // this needs to be added here since the GameOver panel is final
-        double elapsedTime = Stopwatch.elapsedTimeSeconds();
-        time.setText("Elapsed time: " + elapsedTime + " seconds");  // end screen elapsed time text
+        double elapsedTime = Stopwatch.getElapsedTimeSeconds();
+        timeDisplay.setText("Elapsed time: " + elapsedTime + " seconds");  // end screen elapsed time text
 
         setVisible(true);
     }
@@ -45,6 +45,6 @@ public class GameOverPanel extends GameOverlayPanel {
         restartGame.run();
     }
     public void doRestartDifficulty(){
-        DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
+        new DifficultyFrame();
     }
 }

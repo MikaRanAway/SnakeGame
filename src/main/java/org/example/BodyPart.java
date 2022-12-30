@@ -7,7 +7,7 @@ import java.awt.*;
 public class BodyPart {
     private int x;
     private int y;
-    private Color color = UniversalColor.colorBody;
+    private Color color = SnakeColorSettings.bodyColor;
 
     public BodyPart(int x, int y){
         this.x = x;

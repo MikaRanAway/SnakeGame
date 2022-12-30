@@ -4,18 +4,16 @@ import org.example.components.Text.HeaderText;
 import org.example.components.Text.NormalText;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 
 public class GameWonPanel extends GameOverlayPanel{
     Runnable restartGame;
-    private NormalText time;
+    private final NormalText time;
 
     GameWonPanel(){
         OverlayContentContainer contentContainer = new OverlayContentContainer();
 
         HeaderText headerText = new HeaderText("You Won");
-        time = new NormalText("Elapsed time: "); // I had to initialize it as something
+        time = new NormalText("Elapsed time: 0");
 
         JButton TryAgain = new JButton();
         TryAgain.setText("Try Again");
@@ -38,7 +36,7 @@ public class GameWonPanel extends GameOverlayPanel{
         this.restartGame = restartGame;
 
         // this needs to be added here since the GameOver panel is final
-        double elapsedTime = Stopwatch.elapsedTimeSeconds();
+        double elapsedTime = Stopwatch.getElapsedTimeSeconds();
         time.setText("Elapsed time: " + elapsedTime + " seconds");  // end screen elapsed time text
 
         setVisible(true);

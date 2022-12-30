@@ -1,12 +1,12 @@
 package org.example;
 
-import org.example.components.GUI;
+import org.example.components.GameFrame;
 import org.example.components.GamePanel;
 import org.example.components.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.example.UniversalColor.isRandomColor;
+import static org.example.SnakeColorSettings.isRandomColor;
 
 public class Game implements Runnable{
 
@@ -17,7 +17,7 @@ public class Game implements Runnable{
     //Variables
     private static int TICK_SPEED = 100; // in milliseconds
 
-    private final GUI gui;
+    private final GameFrame gameFrame;
     private final GamePanel gamePanel;
     private Snake snake;
     private Apple apple;
@@ -30,15 +30,15 @@ public class Game implements Runnable{
 
     //Constructor
     public Game(){
-        gui = new GUI();
-        gamePanel = gui.addGamePanel();
+        gameFrame = new GameFrame();
+        gamePanel = gameFrame.addGamePanel();
     }
 
 
     //Methods
     public void start(){
         Movement.resetDirections();
-        gui.requestFocus(); //for keyboard listener to work
+        gameFrame.requestFocus(); //for keyboard listener to work
         apple = new Apple();
         snake = new Snake(GamePanel.GRID_WIDTH/2, GamePanel.GRID_HEIGHT/2);
         gamePanel.initialize(snake, apple);

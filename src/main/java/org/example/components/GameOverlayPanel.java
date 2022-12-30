@@ -10,7 +10,7 @@ public class GameOverlayPanel extends JPanel {
         setBackground(backgroundColor);
         ((FlowLayout) getLayout()).setVgap(0); //removes bad margin
         setVisible(false); //default is hidden
-        setPreferredSize(new Dimension(GUI.WINDOW_WIDTH, GUI.CONTENT_HEIGHT));
+        setPreferredSize(new Dimension(GameFrame.WINDOW_WIDTH, GameFrame.CONTENT_HEIGHT));
 
         //Complicated stuff
         setLayout(new GridBagLayout());

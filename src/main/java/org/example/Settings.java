@@ -63,6 +63,11 @@ public class Settings {
 
     private static String getSettingsFilePath(){
         ClassLoader classLoader = Settings.class.getClassLoader();
-        return classLoader.getResource(FILE_NAME).getPath();
+        try{
+            return classLoader.getResource(FILE_NAME).getPath();
+        } catch (NullPointerException e){
+            System.out.println("Could not find the settings file");
+            return "";
+        }
     }
 }

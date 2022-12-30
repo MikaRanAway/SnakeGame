@@ -4,13 +4,13 @@ import org.example.components.GamePanel;
 
 import java.awt.*;
 
-import static org.example.UniversalColor.colorHead;
+import static org.example.SnakeColorSettings.headColor;
 
 public class SnakeHead {
 
     private int x;
     private int y;
-    private Color color = colorHead;
+    private Color color = headColor;
 
     public SnakeHead(int startX, int startY){
         this.x = startX;
