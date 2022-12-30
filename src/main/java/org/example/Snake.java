@@ -4,9 +4,6 @@ import org.example.components.GamePanel;
 import java.awt.*;
 import java.util.Stack;
 
-import static org.example.SnakeColorSettings.isRandomColor;
-import static org.example.SnakeColorSettings.randomizeColors;
-
 
 public class Snake{
     public static final int STARTING_BODY_LENGTH = 3;
@@ -16,16 +13,10 @@ public class Snake{
 
     //Constructor
     public Snake(int startX, int startY){
-        if(isRandomColor){
-            randomizeColors();
-        }
         head = new SnakeHead(startX, startY);
 
         //creates initial body parts
         for(int i = 1; i <= STARTING_BODY_LENGTH; i++){
-            if(isRandomColor){
-                randomizeColors();
-            }
             BodyPart bodyPart = new BodyPart(startX-i, startY);
             snakeBody.push(bodyPart);
         }
@@ -85,12 +76,6 @@ public class Snake{
     public void eat(Apple apple, GamePanel gamePanel){
         apple.getEaten(gamePanel);
         grow();
-    }
-
-    public void eatRandomColor(Apple apple, GamePanel gamePanel){
-        apple.getEaten(gamePanel);
-        grow();
-        randomizeColors();
     }
 
     private void grow(){

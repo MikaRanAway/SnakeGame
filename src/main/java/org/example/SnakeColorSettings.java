@@ -4,24 +4,37 @@ import java.awt.*;
 import java.util.Random;
 
 public class SnakeColorSettings {
-    // The default colour of the snake if the user did not choose the customization optiob
-    static Color headColor = Color.decode("#00ff00");
-    static Color bodyColor = Color.decode("#00dd00");
+    // The default colour of the snake if the user did not choose the customization option
+    private static Color headColor = Color.decode("#00ff00");
+    private static Color bodyColor = Color.decode("#00dd00");
+
     public static boolean isRandomColor = false;
 
-    public static void setColors(Color head, Color body) {
-        headColor = head;
-        bodyColor = body;
+    public static Color getHeadColor(){
+        if(isRandomColor){
+            return getRandomColor();
+        }
+        return headColor;
     }
 
-    public static void randomizeColors(){
+    public static Color getBodyColor(){
+        if(isRandomColor){
+            return getRandomColor();
+        }
+        return bodyColor;
+    }
+
+    public static void setColors(Color headColor, Color bodyColor) {
+        SnakeColorSettings.headColor = headColor;
+        SnakeColorSettings.bodyColor = bodyColor;
+    }
+
+    public static Color getRandomColor(){
         Random random = new Random();
-        double r = random.nextFloat();
-        double g = random.nextFloat();
-        double b = random.nextFloat();
-        Color randomColor = new Color((float) r, (float) g, (float) b);
-        SnakeColorSettings snakeColorSettings = new SnakeColorSettings();
-        snakeColorSettings.setColors(randomColor, randomColor);
+        float r = random.nextFloat();
+        float g = random.nextFloat();
+        float b = random.nextFloat();
+        return new Color(r, g, b);
     }
 }
 

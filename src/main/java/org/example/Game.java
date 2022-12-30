@@ -79,9 +79,7 @@ public class Game implements Runnable{
         }
 
         if(snake.canEat(apple)){
-            if(!isRandomColor){
-                snake.eat(apple, gamePanel);
-            } else snake.eatRandomColor(apple, gamePanel);
+            snake.eat(apple, gamePanel);
         }
 
         gamePanel.repaint(); //no changes are displayed until this is called
