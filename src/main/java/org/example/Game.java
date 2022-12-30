@@ -6,8 +6,6 @@ import org.example.components.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.example.SnakeColorSettings.isRandomColor;
-
 public class Game implements Runnable{
 
     public static void setTickSpeed(int tickSpeed) {
@@ -23,12 +21,8 @@ public class Game implements Runnable{
     private Apple apple;
 
     Thread gameThread;
-    private boolean runGame = true;
+    private boolean gameIsRunning = true;
 
-    int score;
-
-
-    //Constructor
     public Game(){
         gameFrame = new GameFrame();
         gamePanel = gameFrame.addGamePanel();
@@ -46,7 +40,7 @@ public class Game implements Runnable{
 
         Stopwatch.startTimer(); // starts the timer
 
-        runGame = true;
+        gameIsRunning = true;
         gameThread = new Thread(this); // Game.java implements Runnable
         gameThread.start();
     }
@@ -54,7 +48,7 @@ public class Game implements Runnable{
     //This method will run in a different thread. The game window will be unresponsive otherwise.
     @Override
     public void run() {
-        while(runGame){
+        while(gameIsRunning){
             try {
                 TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
                 doGameTick();
@@ -67,7 +61,7 @@ public class Game implements Runnable{
     private void doGameTick(){
         //the order of these statements matters A LOT, be careful
         snake.move();
-        Movement.directionWasUsed();
+        Movement.directionWasUsed(); //to prevent snake from going back in on itself from rapid input
         if(snake.hasCollided(gamePanel)){
             failGame();
             return;
@@ -91,14 +85,14 @@ public class Game implements Runnable{
 
     private void winGame(){
         System.out.println("Won game");
-        runGame = false;
-        gamePanel.showGameWon(this::restart); // :: method reference
+        gameIsRunning = false;
+        gamePanel.showGameWon(this::restart); // :: method reference, passes method as argument
     }
 
     private void failGame(){
         System.out.println("Failed game");
-        runGame = false;
-        gamePanel.showGameOver(this::restart);  // :: method reference
+        gameIsRunning = false;
+        gamePanel.showGameOver(this::restart);  // :: method reference, passes method as argument
     }
 
     public void restart(){

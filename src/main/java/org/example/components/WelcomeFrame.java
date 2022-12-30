@@ -41,11 +41,11 @@ public class WelcomeFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == difficultyLevelBtn){
             welcomeWindow.dispose();
-            new DifficultyFrame();
+            new DifficultyFrame(); //creates and displays frame
         }
-        if (e.getSource() == customizationBtn){
+        else if (e.getSource() == customizationBtn){
             welcomeWindow.dispose();
-            new CustomizationFrame();
+            new CustomizationFrame(); //creates and displays frame
         }
     }
 }

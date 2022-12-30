@@ -35,10 +35,10 @@ public class Snake{
     public void move(){
         // this for loop makes the BodyParts to actually follow the head and each other
         for(int i = snakeBody.size() -1; i > 0; i--){
-            followBody(i);
+            followBodyPart(i);
         }
 
-        followHead();
+        followHead(0);
 
         // these 4 if clauses handle the Direction of the snake
         if (Movement.isUpDirection()){
@@ -51,12 +51,12 @@ public class Snake{
             head.setX(head.getX() - 1);
         }
     }
-    public void followHead(){
-        BodyPart bodyPartClosestToHead = snakeBody.get(0);
+    public void followHead(int i){
+        BodyPart bodyPartClosestToHead = snakeBody.get(i);
         bodyPartClosestToHead.setX(head.getX());
         bodyPartClosestToHead.setY(head.getY());
     }
-    public void followBody(int i){
+    public void followBodyPart(int i){
         BodyPart bodyPart1 = snakeBody.get(i);
         BodyPart bodyPart2 = snakeBody.get(i -1);
         bodyPart1.setX(bodyPart2.getX());
@@ -92,7 +92,7 @@ public class Snake{
     //========== COLLISION ==========
 
     public boolean hasCollided(GamePanel gamePanel){
-        boolean withinBounds = gamePanel.isSpaceWithinBounds(head.getX(), head.getY());
+        boolean withinBounds = gamePanel.isPlaceWithinBounds(head.getX(), head.getY());
         boolean collidedWithItself = this.doesBodyOccupySpace(head.getX(), head.getY());
         
         return !withinBounds || collidedWithItself;

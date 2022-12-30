@@ -15,20 +15,20 @@ public class GameWonPanel extends GameOverlayPanel{
         HeaderText headerText = new HeaderText("You Won");
         time = new NormalText("Elapsed time: 0");
 
-        JButton TryAgain = new JButton();
-        TryAgain.setText("Try Again");
-        TryAgain.addActionListener(e -> {
+        JButton tryAgainBtn = new JButton();
+        tryAgainBtn.setText("Try Again");
+        tryAgainBtn.addActionListener(e -> {
             doGameOver();
         });
 
-        JButton ChooseDifficulty = new JButton();
-        ChooseDifficulty.setText("Choose Difficulty Level");
-        ChooseDifficulty.addActionListener(e -> doRestartDifficulty());
+        JButton chooseDifficultyBtn = new JButton();
+        chooseDifficultyBtn.setText("Choose Difficulty Level");
+        chooseDifficultyBtn.addActionListener(e -> doRestartDifficulty());
 
         contentContainer.add(headerText);
         contentContainer.add(time);
-        contentContainer.add(TryAgain);
-        contentContainer.add(ChooseDifficulty);
+        contentContainer.add(tryAgainBtn);
+        contentContainer.add(chooseDifficultyBtn);
         add(contentContainer);
     }
 
@@ -43,11 +43,11 @@ public class GameWonPanel extends GameOverlayPanel{
     }
 
     public void doGameOver(){
-        setVisible(false);
+        setVisible(false); //hides panel
         restartGame.run();
     }
 
     public void doRestartDifficulty(){
-        DifficultyFrame gameOverRestartDifficulty = new DifficultyFrame();
+        new DifficultyFrame();
     }
 }

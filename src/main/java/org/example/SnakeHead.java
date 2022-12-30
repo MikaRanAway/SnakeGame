@@ -10,7 +10,7 @@ public class SnakeHead {
 
     private int x;
     private int y;
-    private Color color = getHeadColor();
+    private final Color color = getHeadColor();
 
     public SnakeHead(int startX, int startY){
         this.x = startX;

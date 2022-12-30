@@ -25,7 +25,7 @@ public class GamePanel extends JPanel {
         setBackground(Settings.getInstance().gamePanelBackground);
         add(gameOverPanel);
         add(gameWonPanel);
-        setDoubleBuffered(true); // for performance, apparently (Reduce flickering issues)
+        setDoubleBuffered(true); // Reduces flickering issues
     }
 
     public void initialize(Snake snake, Apple apple) {
@@ -76,7 +76,7 @@ public class GamePanel extends JPanel {
         return units * UNIT_SIZE;
     }
 
-    public boolean isSpaceWithinBounds(int x, int y) {
+    public boolean isPlaceWithinBounds(int x, int y) {
         return (x < GRID_WIDTH) && (x >= 0) &&
                 (y < GRID_HEIGHT) && (y >= 0);
     }
@@ -95,8 +95,7 @@ public class GamePanel extends JPanel {
         graphics.fillRect(unitToPx(x), unitToPx(y), UNIT_SIZE, UNIT_SIZE);
     }
 
-    public boolean noEmptySpots() {
-
+    public boolean snakeOccupiesWholeBoard() {
         return snake.getLength() >= GRID_HEIGHT * GRID_WIDTH;
     }
 

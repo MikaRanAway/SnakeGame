@@ -30,7 +30,7 @@ public class Apple {
     }
 
     public void getEaten(GamePanel gamePanel){
-        if(gamePanel.noEmptySpots()) return;
+        if(gamePanel.snakeOccupiesWholeBoard()) return;
         moveToEmptySpot(gamePanel);
     }
     // This method ensures that the new apple will not be generated on the same unit where snake occupies.

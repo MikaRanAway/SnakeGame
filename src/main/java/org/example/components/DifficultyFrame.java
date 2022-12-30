@@ -11,38 +11,41 @@ public class DifficultyFrame implements ActionListener {
 
     JFrame difficultyWindow = new JFrame();
     //========== Creating the Difficulty Frame components ==========
-    JButton Easy = new JButton("Easy");
-    JButton Medium = new JButton("Medium");
-    JButton Hard = new JButton("Hard");
+    JButton easyBtn = new JButton("Easy");
+    JButton mediumBtn = new JButton("Medium");
+    JButton hardBtn = new JButton("Hard");
 
     //========== Defining the Difficulty Frame components(constructors) ==========
     DifficultyFrame(){
-        Easy.setBounds(225,100,150,50);
-        Medium.setBounds(225,250,150,50);
-        Hard.setBounds(225,400,150,50);
-        Easy.addActionListener(this);
-        Medium.addActionListener(this);
-        Hard.addActionListener(this);
+        easyBtn.setBounds(225,100,150,50);
+        mediumBtn.setBounds(225,250,150,50);
+        hardBtn.setBounds(225,400,150,50);
+
+        easyBtn.addActionListener(this);
+        mediumBtn.addActionListener(this);
+        hardBtn.addActionListener(this);
+
         difficultyWindow.setSize(600,600);
         difficultyWindow.getContentPane().setBackground(Color.decode("#3333"));
         difficultyWindow.setLayout(null);
         difficultyWindow.setVisible(true);
         difficultyWindow.setLocationRelativeTo(null);
         difficultyWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        difficultyWindow.add(Easy);
-        difficultyWindow.add(Medium);
-        difficultyWindow.add(Hard);
+
+        difficultyWindow.add(easyBtn);
+        difficultyWindow.add(mediumBtn);
+        difficultyWindow.add(hardBtn);
     }
 
     //========== Choosing the difficulty level where each level will set the snake at a certain speed ==========
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() ==Easy){
+        if (e.getSource() == easyBtn){
             difficultyWindow.dispose();
             Game.setTickSpeed(200);
-        }else if (e.getSource() ==Medium){
+        }else if (e.getSource() == mediumBtn){
             difficultyWindow.dispose();
             Game.setTickSpeed(100);
-        }else if (e.getSource() ==Hard){
+        }else if (e.getSource() == hardBtn){
             difficultyWindow.dispose();
             Game.setTickSpeed(50);
         }

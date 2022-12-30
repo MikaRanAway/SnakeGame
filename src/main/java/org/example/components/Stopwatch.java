@@ -4,7 +4,7 @@ public class Stopwatch {
     private static long startTime;
 
     public static void startTimer(){
-        startTime = System.currentTimeMillis();    // remembers the time when stopwatch is created aka started
+        startTime = System.currentTimeMillis(); // remembers the time when stopwatch is created aka started
     }
 
     public static double getElapsedTimeSeconds(){
