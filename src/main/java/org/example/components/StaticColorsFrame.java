@@ -1,7 +1,5 @@
 package org.example.components;
 
-import org.example.BodyPart;
-import org.example.SnakeHead;
 import org.example.UniversalColor;
 
 import javax.swing.*;
@@ -87,7 +85,7 @@ public class StaticColorsFrame implements ActionListener {
         }
 
         UniversalColor universalColor = new UniversalColor();
-        universalColor.setColorHead(headColor, bodyColor);
+        universalColor.setColors(headColor, bodyColor);
 
         //========== After choosing the snake colour, the user will be moved to the difficulty level frame ==========
         DifficultyFrame DifficultyFrame = new DifficultyFrame();

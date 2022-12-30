@@ -11,37 +11,41 @@ public class WelcomeFrame extends JFrame implements ActionListener {
     JFrame welcomeWindow = new JFrame();
 
     //========== Creating the Welcome Frame components (Buttons) ==========
-    JButton difficultyLevel = new JButton("Difficulty Level");
-    JButton customization = new JButton(("Customization"));
-    JLabel welcomeMessage = new JLabel("Welcome to Wild Snake Game");
+    JButton difficultyLevelBtn = new JButton("Difficulty Level");
+    JButton customizationBtn = new JButton(("Customization"));
+    JLabel welcomeMessageLabel = new JLabel("Welcome to Wild Snake Game");
     //========== Defining the interface components ==========
     public WelcomeFrame(){
         welcomeWindow.setSize(600,600);
         welcomeWindow.getContentPane().setBackground(Color.decode("#333333"));
-        welcomeWindow.setLayout(null);welcomeWindow.setVisible(true);
+        welcomeWindow.setLayout(null);
         welcomeWindow.setLocationRelativeTo(null);
         welcomeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        welcomeWindow.add(difficultyLevel);
-        welcomeWindow.add(customization);
-        welcomeWindow.add(welcomeMessage);
-        welcomeMessage.setBounds(200,50,400,150);
-        welcomeMessage.setForeground(Color.white);
-        difficultyLevel.setBounds(170,250,250,50);
-        customization.setBounds(170,150,250,50);
-        difficultyLevel.addActionListener(this);
-        customization.addActionListener(this);
+        welcomeWindow.add(difficultyLevelBtn);
+        welcomeWindow.add(customizationBtn);
+        welcomeWindow.add(welcomeMessageLabel);
+        welcomeMessageLabel.setBounds(200,50,400,150);
+        welcomeMessageLabel.setForeground(Color.white);
+        difficultyLevelBtn.setBounds(170,250,250,50);
+        customizationBtn.setBounds(170,150,250,50);
+        difficultyLevelBtn.addActionListener(this);
+        customizationBtn.addActionListener(this);
+    }
+
+    public void showFrame(){
+        welcomeWindow.setVisible(true);
     }
 
     //========== Either moving Difficulty frame or to Customization frame ==========
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() ==difficultyLevel){
+        if (e.getSource() == difficultyLevelBtn){
             welcomeWindow.dispose();
-            DifficultyFrame frame = new DifficultyFrame();
+            new DifficultyFrame();
         }
-        if (e.getSource() == customization){
+        if (e.getSource() == customizationBtn){
             welcomeWindow.dispose();
-            CustomizationFrame frame = new CustomizationFrame();
+            new CustomizationFrame();
         }
     }
 }

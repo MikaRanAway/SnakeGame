@@ -4,10 +4,9 @@ import org.example.components.GUI;
 import org.example.components.GamePanel;
 import org.example.components.Stopwatch;
 
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-import static org.example.components.CustomizationFrame.colorRandom;
+import static org.example.UniversalColor.isRandomColor;
 
 public class Game implements Runnable{
 
@@ -80,7 +79,7 @@ public class Game implements Runnable{
         }
 
         if(snake.canEat(apple)){
-            if(!colorRandom){
+            if(!isRandomColor){
                 snake.eat(apple, gamePanel);
             } else snake.eatRandomColor(apple, gamePanel);
         }

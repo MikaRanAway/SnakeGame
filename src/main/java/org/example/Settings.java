@@ -16,7 +16,7 @@ public class Settings {
     public Color gamePanelLineColor = Color.DARK_GRAY; // DEFAULT VALUE
 
     private static Settings instance;
-    public static org.example.Settings getInstance() {
+    public static Settings getInstance() {
         if(instance == null) instance = new Settings();
         return instance;
     }

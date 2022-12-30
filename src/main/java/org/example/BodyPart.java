@@ -4,9 +4,6 @@ import org.example.components.GamePanel;
 
 import java.awt.*;
 
-import static org.example.components.CustomizationFrame.colorRandom;
-import static org.example.components.CustomizationFrame.randomColor;
-
 public class BodyPart {
     private int x;
     private int y;

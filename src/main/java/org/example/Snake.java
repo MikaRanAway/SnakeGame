@@ -4,8 +4,8 @@ import org.example.components.GamePanel;
 import java.awt.*;
 import java.util.Stack;
 
-import static org.example.components.CustomizationFrame.colorRandom;
-import static org.example.components.CustomizationFrame.randomColor;
+import static org.example.UniversalColor.isRandomColor;
+import static org.example.UniversalColor.randomizeColors;
 
 
 public class Snake{
@@ -15,20 +15,19 @@ public class Snake{
     private final Stack<BodyPart> snakeBody = new Stack<BodyPart>();
 
     //Constructor
-    public Snake(int startX, int endX){
-        if(colorRandom){
-            randomColor();
+    public Snake(int startX, int startY){
+        if(isRandomColor){
+            randomizeColors();
         }
-        head = new SnakeHead(startX, endX);
+        head = new SnakeHead(startX, startY);
 
         //creates initial body parts
         for(int i = 1; i <= STARTING_BODY_LENGTH; i++){
-            if(colorRandom){
-                randomColor();
+            if(isRandomColor){
+                randomizeColors();
             }
-            BodyPart bodyPart = new BodyPart(startX-i, endX);
+            BodyPart bodyPart = new BodyPart(startX-i, startY);
             snakeBody.push(bodyPart);
-
         }
     }
 
@@ -37,46 +36,40 @@ public class Snake{
             bodyPart.draw(graphics);
         }
 
-        head.draw(graphics); //after body to look better after collision
+        head.draw(graphics);
     }
 
     //========== MOVEMENT ==========
 
     public void move(){
         // this for loop makes the BodyParts to actually follow the head and each other
-        for(int i = snakeBody.size() -1; i >= 0; i--){
-            if (i != 0){
-                followBody(i);
-            }else {
-                followHead(i);
-            }
+        for(int i = snakeBody.size() -1; i > 0; i--){
+            followBody(i);
         }
+
+        followHead();
 
         // these 4 if clauses handle the Direction of the snake
         if (Movement.isUpDirection()){
             head.setY(head.getY() - 1);
-        }
-        if (Movement.isDownDirection()){
+        } else if (Movement.isDownDirection()){
             head.setY(head.getY() + 1);
-        }
-        if (Movement.isRightDirection()){
+        } else if (Movement.isRightDirection()){
             head.setX(head.getX() + 1);
-        }
-        if (Movement.isLeftDirection()){
+        } else if (Movement.isLeftDirection()){
             head.setX(head.getX() - 1);
         }
     }
-    public void followHead(int i){
-        // the last body part is index = 0 in the stack<BodyPart> and this part is the one exactly before the head
-        BodyPart lastBodyPart = snakeBody.get(i);
-        lastBodyPart.setX(head.getX());
-        lastBodyPart.setY(head.getY());
+    public void followHead(){
+        BodyPart bodyPartClosestToHead = snakeBody.get(0);
+        bodyPartClosestToHead.setX(head.getX());
+        bodyPartClosestToHead.setY(head.getY());
     }
-    public void followBody( int i){
-        BodyPart firsBodyPart = snakeBody.get(i); // the first body part is the last index in the stack<BodyPart>
-        BodyPart secondBodyPart = snakeBody.get(i -1); // the second body part is the second tp last index in the stack<BodyPart>
-        firsBodyPart.setX(secondBodyPart.getX());
-        firsBodyPart.setY(secondBodyPart.getY());
+    public void followBody(int i){
+        BodyPart bodyPart1 = snakeBody.get(i);
+        BodyPart bodyPart2 = snakeBody.get(i -1);
+        bodyPart1.setX(bodyPart2.getX());
+        bodyPart1.setY(bodyPart2.getY());
     }
 
 
@@ -97,7 +90,7 @@ public class Snake{
     public void eatRandomColor(Apple apple, GamePanel gamePanel){
         apple.getEaten(gamePanel);
         grow();
-        randomColor();
+        randomizeColors();
     }
 
     private void grow(){
