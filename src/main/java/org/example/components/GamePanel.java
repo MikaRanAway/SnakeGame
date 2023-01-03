@@ -82,7 +82,7 @@ public class GamePanel extends JPanel {
     }
 
     public boolean isSpaceEmpty(int x, int y) {
-        boolean snakeOccupiesSpace = snake.doesSnakeOccupySpace(x, y);
+        boolean snakeOccupiesSpace = snake.doesOccupySpace(x, y);
         boolean appleOccupiesSpace =
                 (apple.getX() == x) &&
                 (apple.getY() == y);

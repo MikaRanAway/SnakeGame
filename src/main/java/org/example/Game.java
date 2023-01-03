@@ -9,11 +9,11 @@ import java.util.concurrent.TimeUnit;
 public class Game implements Runnable{
 
     public static void setTickSpeed(int tickSpeed) {
-        TICK_SPEED = tickSpeed;
+        Game.tickSpeed = tickSpeed;
     }
 
     //Variables
-    private static int TICK_SPEED = 100; // in milliseconds
+    private static int tickSpeed = 100; // in milliseconds, default value
 
     private final GameFrame gameFrame;
     private final GamePanel gamePanel;
@@ -50,7 +50,7 @@ public class Game implements Runnable{
     public void run() {
         while(gameIsRunning){
             try {
-                TimeUnit.MILLISECONDS.sleep(TICK_SPEED);
+                TimeUnit.MILLISECONDS.sleep(tickSpeed);
                 doGameTick();
             } catch (InterruptedException e) {
                 e.printStackTrace();
