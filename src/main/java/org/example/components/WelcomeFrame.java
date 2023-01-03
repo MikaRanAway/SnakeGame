@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 
 public class WelcomeFrame extends JFrame implements ActionListener {
     //Frames
-    JFrame welcomeWindow = new JFrame();
+    private final JFrame welcomeWindow = new JFrame();
 
     //========== Creating the Welcome Frame components (Buttons) ==========
-    JButton difficultyLevelBtn = new JButton("Difficulty Level");
-    JButton customizationBtn = new JButton(("Customization"));
-    JLabel welcomeMessageLabel = new JLabel("Welcome to Wild Snake Game");
+    private final JButton difficultyLevelBtn = new JButton("Difficulty Level");
+    private final JButton customizationBtn = new JButton(("Customization"));
+
     //========== Defining the interface components ==========
     public WelcomeFrame(){
         welcomeWindow.setSize(600,600);
@@ -21,15 +21,19 @@ public class WelcomeFrame extends JFrame implements ActionListener {
         welcomeWindow.setLayout(null);
         welcomeWindow.setLocationRelativeTo(null);
         welcomeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel welcomeMessageLabel = new JLabel("Welcome to Wild Snake Game");
+        welcomeMessageLabel.setForeground(Color.white);
+        welcomeMessageLabel.setBounds(200,50,400,150);
+        difficultyLevelBtn.setBounds(170,250,250,50);
+        customizationBtn.setBounds(170,150,250,50);
+
+        difficultyLevelBtn.addActionListener(this);
+        customizationBtn.addActionListener(this);
+
         welcomeWindow.add(difficultyLevelBtn);
         welcomeWindow.add(customizationBtn);
         welcomeWindow.add(welcomeMessageLabel);
-        welcomeMessageLabel.setBounds(200,50,400,150);
-        welcomeMessageLabel.setForeground(Color.white);
-        difficultyLevelBtn.setBounds(170,250,250,50);
-        customizationBtn.setBounds(170,150,250,50);
-        difficultyLevelBtn.addActionListener(this);
-        customizationBtn.addActionListener(this);
     }
 
     public void showFrame(){

@@ -10,18 +10,18 @@ import java.awt.event.ActionListener;
 public class StaticColorsFrame implements ActionListener {
 
     //Frame
-    JFrame staticColorFrame = new JFrame();
+    private final JFrame staticColorFrame = new JFrame();
 
     //========== Creating the Static colours frame components (Buttons) ==========
-    JButton red = new JButton("Red");
-    JButton blue = new JButton("Blue");
-    JButton green = new JButton("Green");
-    JButton yellow = new JButton("Yellow");
-    JButton white = new JButton("White");
-    JButton purple = new JButton("Purple");
+    private final JButton red = new JButton("Red");
+    private final JButton blue = new JButton("Blue");
+    private final JButton green = new JButton("Green");
+    private final JButton yellow = new JButton("Yellow");
+    private final JButton white = new JButton("White");
+    private final JButton purple = new JButton("Purple");
 
     //========== Defining the Static Colours frame components(constructors) ==========
-    StaticColorsFrame(){
+    public StaticColorsFrame(){
         red.setBounds(125,100,150,50);
         blue.setBounds(125,250,150,50);
         green.setBounds(125,400,150,50);
