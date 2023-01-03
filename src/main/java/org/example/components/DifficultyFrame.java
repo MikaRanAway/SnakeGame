@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 
 public class DifficultyFrame implements ActionListener {
 
-    JFrame difficultyWindow = new JFrame();
+    private final JFrame difficultyWindow = new JFrame();
     //========== Creating the Difficulty Frame components ==========
-    JButton easyBtn = new JButton("Easy");
-    JButton mediumBtn = new JButton("Medium");
-    JButton hardBtn = new JButton("Hard");
+    private final JButton easyBtn = new JButton("Easy");
+    private final JButton mediumBtn = new JButton("Medium");
+    private final JButton hardBtn = new JButton("Hard");
 
     //========== Defining the Difficulty Frame components(constructors) ==========
-    DifficultyFrame(){
+    public DifficultyFrame(){
         easyBtn.setBounds(225,100,150,50);
         mediumBtn.setBounds(225,250,150,50);
         hardBtn.setBounds(225,400,150,50);

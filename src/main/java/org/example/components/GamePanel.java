@@ -13,8 +13,8 @@ public class GamePanel extends JPanel {
     public static final int GRID_WIDTH = GameFrame.WINDOW_WIDTH / UNIT_SIZE; // Not in pixels, measured in units
     public static final int GRID_HEIGHT = GameFrame.CONTENT_HEIGHT / UNIT_SIZE; // Not in pixels, measured in units
 
-    final GameOverPanel gameOverPanel = new GameOverPanel();
-    final GameWonPanel gameWonPanel = new GameWonPanel();
+    private final GameOverPanel gameOverPanel = new GameOverPanel();
+    private final GameWonPanel gameWonPanel = new GameWonPanel();
     private Snake snake;
     private Apple apple;
 
@@ -76,7 +76,7 @@ public class GamePanel extends JPanel {
         return units * UNIT_SIZE;
     }
 
-    public boolean isPlaceWithinBounds(int x, int y) {
+    public boolean isLocationWithinBounds(int x, int y) {
         return (x < GRID_WIDTH) && (x >= 0) &&
                 (y < GRID_HEIGHT) && (y >= 0);
     }

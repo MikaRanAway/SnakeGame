@@ -12,15 +12,15 @@ public class CustomizationFrame implements ActionListener {
     private static final Color BACKGROUND_COLOR = Color.decode("#3333");
 
     //Frames
-    JFrame customizationFrame = new JFrame();
+    private final JFrame customizationFrame = new JFrame();
 
     //========== Creating the Customization frame components (Buttons) ==========
-    JButton staticColorsBtn = new JButton("Static Colors");
-    JButton randomColorsBtn = new JButton("Random");
-    JButton invisibleOptionBtn = new JButton("Invisible");
+    private final JButton staticColorsBtn = new JButton("Static Colors");
+    private final JButton randomColorsBtn = new JButton("Random");
+    private final JButton invisibleOptionBtn = new JButton("Invisible");
 
     //========== Defining the Customization frame components(constructor) ==========
-    CustomizationFrame() {
+    public CustomizationFrame() {
         staticColorsBtn.setBounds(225, 100, 150, 50);
         randomColorsBtn.setBounds(225, 250, 150, 50);
         invisibleOptionBtn.setBounds(225, 400, 150, 50);

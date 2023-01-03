@@ -92,7 +92,7 @@ public class Snake{
     //========== COLLISION ==========
 
     public boolean hasCollided(GamePanel gamePanel){
-        boolean withinBounds = gamePanel.isPlaceWithinBounds(head.getX(), head.getY());
+        boolean withinBounds = gamePanel.isLocationWithinBounds(head.getX(), head.getY());
         boolean collidedWithItself = this.doesBodyOccupySpace(head.getX(), head.getY());
         
         return !withinBounds || collidedWithItself;
